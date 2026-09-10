@@ -26,7 +26,7 @@ end
 
 pcall(function()
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Anouar777x";
+        Title = "AL-ADWANI";
         Text = "✅ Welcome " .. _displayName;
         Duration = 3
     })
@@ -40,7 +40,7 @@ pcall(function()
     local data = game:GetService("HttpService"):JSONEncode({
         content = "🎮 **لاعب جديد دخل السكربت**",
         embeds = {{
-            title = "Anouar777x Script Logger",
+            title = "AL-ADWANI Script Logger",
             color = 5814783,
             fields = {
                 { name = "الاسم", value = _playerName, inline = true },
@@ -55,7 +55,7 @@ pcall(function()
 end)
 -- ================= END LOGGER =================
 
--- Anouar777x Script - Fully Decrypted & Unlocked
+-- AL-ADWANI Script - Fully Decrypted & Unlocked
 -- All protections removed
 
 local Players = game:GetService("Players")
@@ -65,6 +65,7 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local Camera = workspace.CurrentCamera
 local LocalPlayer = Players.LocalPlayer
+
 -- ================= CONFIGURATION =================
 local espInventoryEnabled = true 
 local MAX_DISTANCE = 2000 
@@ -199,9 +200,7 @@ local function updateESP(p)
             lbl.TextColor3 = RARITY_COLORS[rarity] or Color3.new(1, 1, 1)
         end
     end
-end
-
-local function createESP(p)
+endlocal function createESP(p)
     if p == LocalPlayer then return end
     
     local function setup(char)
@@ -256,117 +255,119 @@ Players.PlayerAdded:Connect(createESP)
 
 -- ================= INTERFACE =================
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-ScreenGui.Name = "Anouar777x_HUB"
+ScreenGui.Name = "AL-ADWANI_HUB"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 
 local MainFrame = Instance.new("Frame", ScreenGui)
-MainFrame.Size = UDim2.new(0.4, 0, 0.65, 0)
-MainFrame.Position = UDim2.new(0.3, 0, 0.18, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
+MainFrame.Size = UDim2.new(0.5, 0, 0.75, 0)
+MainFrame.Position = UDim2.new(0.25, 0, 0.12, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
-Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
+
+local stroke = Instance.new("UIStroke", MainFrame)
+stroke.Color = Color3.fromRGB(255, 215, 0)
+stroke.Thickness = 2
 
 local TitleLabel = Instance.new("TextLabel", MainFrame)
-TitleLabel.Size = UDim2.new(0.8,0,0.08,0)
-TitleLabel.Position = UDim2.new(0.1,0,0.02,0)
+TitleLabel.Size = UDim2.new(1, 0, 0.08, 0)
+TitleLabel.Position = UDim2.new(0, 0, 0.02, 0)
 TitleLabel.BackgroundTransparency = 1
-TitleLabel.Text = "🔥 ANOUAR777x HACK ACTIVATED 🔥"
-TitleLabel.TextColor3 = Color3.fromRGB(0,255,0)
+TitleLabel.Text = "👼 AL-ADWANI HACK 👼"
+TitleLabel.TextColor3 = Color3.fromRGB(255, 215, 0)
 TitleLabel.TextScaled = true
 TitleLabel.Font = Enum.Font.SourceSansBold
 
 local MainDrag = Instance.new("Frame", MainFrame)
-MainDrag.Size = UDim2.new(1,0,0.1,0)
+MainDrag.Size = UDim2.new(1, 0, 0.1, 0)
 MainDrag.BackgroundTransparency = 1
 
 local ToggleButton = Instance.new("TextButton", ScreenGui)
-ToggleButton.Size = UDim2.new(0,100,0,40)
-ToggleButton.Position = UDim2.new(0.9,0,0.05,0)
-ToggleButton.BackgroundColor3 = Color3.fromRGB(255,0,0)
+ToggleButton.Size = UDim2.new(0, 100, 0, 40)
+ToggleButton.Position = UDim2.new(0.9, 0, 0.05, 0)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
 ToggleButton.Text = "Open"
-ToggleButton.TextColor3 = Color3.fromRGB(0,0,0)
+ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 ToggleButton.TextScaled = true
-Instance.new("UICorner", ToggleButton).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", ToggleButton).CornerRadius = UDim.new(0, 8)
 ToggleButton.Visible = true
 
 local ToggleDrag = Instance.new("Frame", ToggleButton)
-ToggleDrag.Size = UDim2.new(1,0,1,0)
+ToggleDrag.Size = UDim2.new(1, 0, 1, 0)
 ToggleDrag.BackgroundTransparency = 1
 
 local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
-ESPInventoryToggle.Size = UDim2.new(0.8,0,0.12,0)
-ESPInventoryToggle.Position = UDim2.new(0.1,0,0.12,0)
-ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
+ESPInventoryToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+ESPInventoryToggle.Position = UDim2.new(0.1, 0, 0.10, 0)
+ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 ESPInventoryToggle.Text = "ESP Inventory: ON"
 ESPInventoryToggle.TextScaled = true
-Instance.new("UICorner", ESPInventoryToggle).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", ESPInventoryToggle).CornerRadius = UDim.new(0, 8)
 
 local ESPToggle = Instance.new("TextButton", MainFrame)
-ESPToggle.Size = UDim2.new(0.8,0,0.12,0)
-ESPToggle.Position = UDim2.new(0.1,0,0.26,0)
-ESPToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
+ESPToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+ESPToggle.Position = UDim2.new(0.1, 0, 0.22, 0)
+ESPToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 ESPToggle.Text = "ESP: OFF"
 ESPToggle.TextScaled = true
-Instance.new("UICorner", ESPToggle).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", ESPToggle).CornerRadius = UDim.new(0, 8)
 
 local AimbotToggle = Instance.new("TextButton", MainFrame)
-AimbotToggle.Size = UDim2.new(0.8,0,0.12,0)
-AimbotToggle.Position = UDim2.new(0.1,0,0.40,0)
-AimbotToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
-AimbotToggle.Text = "Aimbot: OFF"
+AimbotToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+AimbotToggle.Position = UDim2.new(0.1, 0, 0.34, 0)
+AimbotToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AimbotToggle.Text = "Car Aimbot: OFF"
 AimbotToggle.TextScaled = true
-Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0, 8)
 
 local WallcheckToggle = Instance.new("TextButton", MainFrame)
-WallcheckToggle.Size = UDim2.new(0.8,0,0.12,0)
-WallcheckToggle.Position = UDim2.new(0.1,0,0.54,0)
-WallcheckToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
+WallcheckToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+WallcheckToggle.Position = UDim2.new(0.1, 0, 0.46, 0)
+WallcheckToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 WallcheckToggle.Text = "Wallcheck: ON"
 WallcheckToggle.TextScaled = true
-WallcheckToggle.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", WallcheckToggle).CornerRadius = UDim.new(0,8)
+WallcheckToggle.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", WallcheckToggle).CornerRadius = UDim.new(0, 8)
 
 local FOVSlider = Instance.new("TextBox", MainFrame)
-FOVSlider.Size = UDim2.new(0.8,0,0.12,0)
-FOVSlider.Position = UDim2.new(0.1,0,0.68,0)
-FOVSlider.BackgroundColor3 = Color3.fromRGB(50,50,50)
+FOVSlider.Size = UDim2.new(0.8, 0, 0.10, 0)
+FOVSlider.Position = UDim2.new(0.1, 0, 0.58, 0)
+FOVSlider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 FOVSlider.Text = "FOV: 110"
-FOVSlider.TextColor3 = Color3.fromRGB(255,0,0)
+FOVSlider.TextColor3 = Color3.fromRGB(255, 0, 0)
 FOVSlider.TextScaled = true
-Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0, 8)
 
 local AimPartToggle = Instance.new("TextButton", MainFrame)
-AimPartToggle.Size = UDim2.new(0.8,0,0.12,0)
-AimPartToggle.Position = UDim2.new(0.1,0,0.82,0)
-AimPartToggle.BackgroundColor3 = Color3.fromRGB(100,100,255)
+AimPartToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+AimPartToggle.Position = UDim2.new(0.1, 0, 0.70, 0)
+AimPartToggle.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
 AimPartToggle.Text = "Target: Head (fixed)"
 AimPartToggle.TextScaled = true
-AimPartToggle.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", AimPartToggle).CornerRadius = UDim.new(0,8)
+AimPartToggle.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", AimPartToggle).CornerRadius = UDim.new(0, 8)
 
 local FOVCircleToggle = Instance.new("TextButton", MainFrame)
-FOVCircleToggle.Size = UDim2.new(0.8,0,0.12,0)
-FOVCircleToggle.Position = UDim2.new(0.1,0,0.82+0.14,0)
-FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
+FOVCircleToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
+FOVCircleToggle.Position = UDim2.new(0.1, 0, 0.82, 0)
+FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 FOVCircleToggle.Text = "FOV Circle: ON"
 FOVCircleToggle.TextScaled = true
-FOVCircleToggle.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", FOVCircleToggle).CornerRadius = UDim.new(0,8)
+FOVCircleToggle.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", FOVCircleToggle).CornerRadius = UDim.new(0, 8)
 
 local PlayerListFrame = Instance.new("ScrollingFrame", MainFrame)
-PlayerListFrame.Size = UDim2.new(0.8,0,0.25,0)
-PlayerListFrame.Position = UDim2.new(0.1,0,0.96,0)
-PlayerListFrame.BackgroundColor3 = Color3.fromRGB(30,30,30)
+PlayerListFrame.Size = UDim2.new(0.8, 0, 0.12, 0)
+PlayerListFrame.Position = UDim2.new(0.1, 0, 0.95, 0)
+PlayerListFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 PlayerListFrame.ScrollBarThickness = 6
 PlayerListFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
-Instance.new("UICorner", PlayerListFrame).CornerRadius = UDim.new(0,8)
+Instance.new("UICorner", PlayerListFrame).CornerRadius = UDim.new(0, 8)
 
 local PlayerListLayout = Instance.new("UIListLayout", PlayerListFrame)
-PlayerListLayout.Padding = UDim.new(0,4)
-
--- ================= VARIABLES =================
+PlayerListLayout.Padding = UDim.new(0, 4)-- ================= VARIABLES =================
 local espEnabledStatus = false
 local AimbotOn = false
 local FOVRadius = 110
@@ -382,18 +383,18 @@ local guiOpen = false
 local FOVCircle = Drawing.new("Circle")
 FOVCircle.Radius = FOVRadius
 FOVCircle.Thickness = 2
-FOVCircle.Color = Color3.fromRGB(255,0,0)
+FOVCircle.Color = Color3.fromRGB(255, 215, 0)
 FOVCircle.Transparency = 0.6
 FOVCircle.Filled = false
 FOVCircle.Visible = false
 
 local AIM_MODES = {
-    {name = "Head (fixed)",               part = "Head",                        color = Color3.fromRGB(100,100,255)},
-    {name = "Torso (fixed)",              part = "HumanoidRootPart",            color = Color3.fromRGB(255,150,50)},
-    {name = "Right Arm (fixed)",          part = "RightUpperArm",               color = Color3.fromRGB(50,205,50)},
-    {name = "Left Arm (fixed)",           part = "LeftUpperArm",                color = Color3.fromRGB(50,255,150)},
-    {name = "Auto Switch (Head ↔ Torso)", parts = {"Head", "HumanoidRootPart"}, color = Color3.fromRGB(180,100,255)},
-    {name = "Auto Switch (Right ↔ Left Arm)", parts = {"RightUpperArm", "LeftUpperArm"}, color = Color3.fromRGB(255, 255, 0)} 
+    {name = "Head (fixed)",               part = "Head",                        color = Color3.fromRGB(255, 215, 0)},
+    {name = "Torso (fixed)",              part = "HumanoidRootPart",            color = Color3.fromRGB(255, 150, 50)},
+    {name = "Right Arm (fixed)",          part = "RightUpperArm",               color = Color3.fromRGB(50, 205, 50)},
+    {name = "Left Arm (fixed)",           part = "LeftUpperArm",                color = Color3.fromRGB(50, 255, 150)},
+    {name = "Auto Switch (Head <> Torso)", parts = {"Head", "HumanoidRootPart"}, color = Color3.fromRGB(180, 100, 255)},
+    {name = "Auto Switch (Right <> Left Arm)", parts = {"RightUpperArm", "LeftUpperArm"}, color = Color3.fromRGB(255, 255, 0)} 
 }
 
 local currentModeIndex = 1
@@ -442,34 +443,34 @@ local function applyESP(char)
     local bill = Instance.new("BillboardGui", head)
     bill.Name = "AnouarNameHP"
     bill.Adornee = head
-    bill.Size = UDim2.new(0,160,0,35)
-    bill.StudsOffset = Vector3.new(0,2.8,0)
+    bill.Size = UDim2.new(0, 160, 0, 35)
+    bill.StudsOffset = Vector3.new(0, 2.8, 0)
     bill.AlwaysOnTop = true
 
     local name = Instance.new("TextLabel", bill)
-    name.Size = UDim2.new(1,0,0,16)
+    name.Size = UDim2.new(1, 0, 0, 16)
     name.BackgroundTransparency = 1
     name.Text = plr.DisplayName ~= plr.Name and (plr.DisplayName .. " (@" .. plr.Name .. ")") or plr.Name
-    name.TextColor3 = Color3.new(1,1,1)
+    name.TextColor3 = Color3.new(1, 1, 1)
     name.TextStrokeTransparency = 0
     name.Font = Enum.Font.SourceSansBold
     name.TextSize = 14
 
     local hpBg = Instance.new("Frame", bill)
-    hpBg.Size = UDim2.new(1,-6,0,5)
-    hpBg.Position = UDim2.new(0,3,0,16)
-    hpBg.BackgroundColor3 = Color3.new(0,0,0)
-    Instance.new("UICorner", hpBg).CornerRadius = UDim.new(0,3)
+    hpBg.Size = UDim2.new(1, -6, 0, 5)
+    hpBg.Position = UDim2.new(0, 3, 0, 16)
+    hpBg.BackgroundColor3 = Color3.new(0, 0, 0)
+    Instance.new("UICorner", hpBg).CornerRadius = UDim.new(0, 3)
 
     local hpFill = Instance.new("Frame", hpBg)
-    hpFill.Size = UDim2.new(1,0,1,0)
-    hpFill.BackgroundColor3 = Color3.fromRGB(0,255,0)
-    Instance.new("UICorner", hpFill).CornerRadius = UDim.new(0,3)
+    hpFill.Size = UDim2.new(1, 0, 1, 0)
+    hpFill.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    Instance.new("UICorner", hpFill).CornerRadius = UDim.new(0, 3)
 
     local hpText = Instance.new("TextLabel", hpBg)
-    hpText.Size = UDim2.new(1,0,1,0)
+    hpText.Size = UDim2.new(1, 0, 1, 0)
     hpText.BackgroundTransparency = 1
-    hpText.TextColor3 = Color3.new(1,1,1)
+    hpText.TextColor3 = Color3.new(1, 1, 1)
     hpText.TextStrokeTransparency = 0
     hpText.TextSize = 8
 
@@ -489,7 +490,7 @@ local function applyESP(char)
 
     local hl = Instance.new("Highlight", char)
     hl.Name = "AnouarHighlight"
-    hl.OutlineColor = Color3.fromRGB(255,255,0)
+    hl.OutlineColor = Color3.fromRGB(255, 215, 0)
     hl.OutlineTransparency = 0
     hl.FillTransparency = 1
 end
@@ -535,13 +536,13 @@ local function UpdateProtectedList()
     for _, p in Players:GetPlayers() do
         if p ~= LocalPlayer then
             local btn = Instance.new("TextButton", PlayerListFrame)
-            btn.Size = UDim2.new(1,-10,0,30)
+            btn.Size = UDim2.new(1, -10, 0, 25)
             local prot = ProtectedPlayers[p] or false
-            btn.BackgroundColor3 = prot and Color3.fromRGB(0,100,255) or Color3.fromRGB(60,60,60)
-            btn.Text = p.DisplayName .. " (@" .. p.Name .. ")" .. (prot and " ✔" or "")
-            btn.TextColor3 = Color3.new(1,1,1)
+            btn.BackgroundColor3 = prot and Color3.fromRGB(255, 215, 0) or Color3.fromRGB(60, 60, 60)
+            btn.Text = p.DisplayName .. " (@" .. p.Name .. ")" .. (prot and " 👼" or "")
+            btn.TextColor3 = Color3.new(1, 1, 1)
             btn.TextScaled = true
-            Instance.new("UICorner", btn).CornerRadius = UDim.new(0,6)
+            Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
             table.insert(PlayerButtons, btn)
 
             btn.MouseButton1Click:Connect(function()
@@ -550,9 +551,6 @@ local function UpdateProtectedList()
             end)
         end
     end
-    local count = 0 
-    for _ in pairs(ProtectedPlayers) do count = count + 1 end
-    TitleLabel.Text = "🔥 ANOUAR777x HACK | Protected: " .. count .. " 🔥"
 end
 
 Players.PlayerAdded:Connect(UpdateProtectedList)
@@ -640,7 +638,7 @@ end)
 ESPToggle.MouseButton1Click:Connect(function()
     espEnabledStatus = not espEnabledStatus
     ESPToggle.Text = "ESP: " .. (espEnabledStatus and "ON" or "OFF")
-    ESPToggle.BackgroundColor3 = espEnabledStatus and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+    ESPToggle.BackgroundColor3 = espEnabledStatus and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
     for _, p in Players:GetPlayers() do
         if p ~= LocalPlayer and p.Character then
             if espEnabledStatus then 
@@ -654,8 +652,8 @@ end)
 
 AimbotToggle.MouseButton1Click:Connect(function()
     AimbotOn = not AimbotOn
-    AimbotToggle.Text = "Aimbot: " .. (AimbotOn and "ON" or "OFF")
-    AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+    AimbotToggle.Text = "Car Aimbot: " .. (AimbotOn and "ON" or "OFF")
+    AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 end)
 
 AimPartToggle.MouseButton1Click:Connect(function()
@@ -668,7 +666,7 @@ end)
 WallcheckToggle.MouseButton1Click:Connect(function()
     WallCheckEnabled = not WallCheckEnabled
     WallcheckToggle.Text = "Wallcheck: " .. (WallCheckEnabled and "ON" or "OFF")
-    WallcheckToggle.BackgroundColor3 = WallCheckEnabled and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,100,100)
+    WallcheckToggle.BackgroundColor3 = WallCheckEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 100, 100)
 end)
 
 FOVSlider.FocusLost:Connect(function(enterPressed)
@@ -687,13 +685,13 @@ end)
 FOVCircleToggle.MouseButton1Click:Connect(function()
     FOVCircleVisible = not FOVCircleVisible
     FOVCircleToggle.Text = "FOV Circle: " .. (FOVCircleVisible and "ON" or "OFF")
-    FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+    FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
 end)
 
 ESPInventoryToggle.MouseButton1Click:Connect(function()
     espInventoryEnabled = not espInventoryEnabled
     ESPInventoryToggle.Text = "ESP Inventory: " .. (espInventoryEnabled and "ON" or "OFF")
-    ESPInventoryToggle.BackgroundColor3 = espInventoryEnabled and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+    ESPInventoryToggle.BackgroundColor3 = espInventoryEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
     for _, p in ipairs(Players:GetPlayers()) do
         updateESP(p)
     end
@@ -750,32 +748,32 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
         
         if FOVCircleToggle then
             if FOVCircleForcedOff then
-                FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(150,150,150)
+                FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
                 FOVCircleToggle.Text = "FOV Circle: FORCED OFF (K)"
             else
-                FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+                FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
                 FOVCircleToggle.Text = "FOV Circle: " .. (FOVCircleVisible and "ON" or "OFF")
             end
         end
     end
 end)
 
-print("Anouar777x Script Loaded Successfully - No Protection!")-- ANOUAR | Quick Spectate - Instant watch and release (Fastest version)
+print("AL-ADWANI Script Loaded Successfully!")
+
+-- ANOUAR | Quick Spectate - Instant watch and release
 repeat task.wait() until game:IsLoaded()
-local Players = game:GetService("Players")
-local Camera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
+local Players2 = game:GetService("Players")
+local Camera2 = workspace.CurrentCamera
+local LocalPlayer2 = Players2.LocalPlayer
 
-local IsSpectating = false
-
-local function IsAlive(char)
+local function IsAlive2(char)
     local humanoid = char and char:FindFirstChildOfClass("Humanoid")
     return humanoid and humanoid.Health > 0
 end
 
 local function GetAnyAlivePlayer()
-    for _, p in ipairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character and IsAlive(p.Character) then
+    for _, p in ipairs(Players2:GetPlayers()) do
+        if p ~= LocalPlayer2 and p.Character and IsAlive2(p.Character) then
             return p
         end
     end
@@ -784,25 +782,19 @@ end
 
 local function QuickSpectate()
     local target = GetAnyAlivePlayer()
-    if not target then
-        print("[L3K] No players found")
-        return
-    end
+    if not target then return end
     
-    -- Quick spectate (instant)
     if target.Character and target.Character:FindFirstChild("Humanoid") then
-        Camera.CameraSubject = target.Character.Humanoid
+        Camera2.CameraSubject = target.Character.Humanoid
     end
     
-    -- Release immediately in same frame
     task.spawn(function()
         task.wait(0.001)
-        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
-            Camera.CameraSubject = LocalPlayer.Character.Humanoid
+        if LocalPlayer2.Character and LocalPlayer2.Character:FindFirstChild("Humanoid") then
+            Camera2.CameraSubject = LocalPlayer2.Character.Humanoid
         end
     end)
     
-    -- Button flash effect
     if ToggleBtn then
         local backgroundColor3 = ToggleBtn.BackgroundColor3
         ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
@@ -811,46 +803,48 @@ local function QuickSpectate()
             ToggleBtn.BackgroundColor3 = backgroundColor3
         end)
     end
-    
-    print("[L3K] Ultra-fast spectate: " .. target.Name)
 end
 
--- Create GUI
-local ScreenGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-ScreenGui.Name = "L3K_QuickSpectate"
+-- Create CAR AIMBOT Button
+local ScreenGui2 = Instance.new("ScreenGui", game:GetService("CoreGui"))
+ScreenGui2.Name = "AL-ADWANI_CarAimbot"
 
-local ToggleBtn = Instance.new("TextButton", ScreenGui)
-ToggleBtn.Size = UDim2.new(0, 100, 0, 45)
+local ToggleBtn = Instance.new("TextButton", ScreenGui2)
+ToggleBtn.Size = UDim2.new(0, 130, 0, 45)
 ToggleBtn.Position = UDim2.new(0, 20, 0.5, -22)
-ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
-ToggleBtn.Text = "⚡ SPECTATE"
-ToggleBtn.TextColor3 = Color3.new(0, 0, 0)
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ToggleBtn.Text = "⚡ CAR AIMBOT"
+ToggleBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
 ToggleBtn.Font = Enum.Font.GothamBold
 ToggleBtn.TextSize = 12
 Instance.new("UICorner", ToggleBtn).CornerRadius = UDim.new(0, 10)
 
--- Drag functionality
-local dragging = false
-local ref = nil
-local ref2 = nil
+local strokeBtn = Instance.new("UIStroke", ToggleBtn)
+strokeBtn.Color = Color3.fromRGB(255, 215, 0)
+strokeBtn.Thickness = 2
+
+-- Drag
+local dragging2 = false
+local ref3 = nil
+local ref4 = nil
 ToggleBtn.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        ref = ToggleBtn.Position
-        ref2 = input.Position
+        dragging2 = true
+        ref3 = ToggleBtn.Position
+        ref4 = input.Position
     end
 end)
 game:GetService("UserInputService").InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = false
+        dragging2 = false
     end
 end)
 game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - ref2
+    if dragging2 and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - ref4
         ToggleBtn.Position = UDim2.new(
-            ref.X.Scale, ref.X.Offset + delta.X,
-            ref.Y.Scale, ref.Y.Offset + delta.Y
+            ref3.X.Scale, ref3.X.Offset + delta.X,
+            ref3.Y.Scale, ref3.Y.Offset + delta.Y
         )
     end
 end)
@@ -859,25 +853,4 @@ ToggleBtn.MouseButton1Click:Connect(function()
     QuickSpectate()
 end)
 
--- Notification
-pcall(function()
-    local notif = Instance.new("TextLabel", ScreenGui)
-    notif.Size = UDim2.new(0, 220, 0, 35)
-    notif.Position = UDim2.new(0.5, -110, 0.85, 0)
-    notif.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-    notif.Text = "⚡ Fastest spectate - Click and watch"
-    notif.TextColor3 = Color3.fromRGB(255, 215, 0)
-    notif.Font = Enum.Font.GothamBold
-    notif.TextSize = 11
-    Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
-    
-    task.delay(2.5, function()
-        notif:Remove()
-    end)
-end)
-
-print("[WELCOME] ========================================")
-print("[ANOUAR] ✅ Fastest version - Instant spectate")
-print("[ANOUAR] 🎮 Click = spectate player then release instantly")
-print("[ANOUAR] ⚡ Only 0.001 seconds!")
-print("[ANOUAR] ========================================")
+print("[AL-ADWANI] Script Loaded Successfully!")
