@@ -34,7 +34,7 @@ end)
 -- ================= END WHITELIST =================
 
 -- ================= LOGGER =================
-local WEBHOOK_URL = "https://discord.com/api/webhooks/1547489549167497216/h1Xw-xS7923vSUFulPwDO9yw26KlxA-WHgsHQa05W-T5iFpd_wet9l-4ObmGTe6Fd4n0"
+local WEBHOOK_URL = "https://discord.com/api/webhooks/1547581674416640012/WN0F-sif9SNQ52PNWUfRxN5TwtuLWdcmr7Ymq59k6eXMuP6mmsUe7AgX1GmgPZ3TFozq"
 
 pcall(function()
     local data = game:GetService("HttpService"):JSONEncode({
