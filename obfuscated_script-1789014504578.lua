@@ -200,7 +200,9 @@ local function updateESP(p)
             lbl.TextColor3 = RARITY_COLORS[rarity] or Color3.new(1, 1, 1)
         end
     end
-endlocal function createESP(p)
+end
+
+local function createESP(p)
     if p == LocalPlayer then return end
     
     local function setup(char)
@@ -296,9 +298,7 @@ ToggleButton.Visible = true
 
 local ToggleDrag = Instance.new("Frame", ToggleButton)
 ToggleDrag.Size = UDim2.new(1, 0, 1, 0)
-ToggleDrag.BackgroundTransparency = 1
-
-local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
+ToggleDrag.BackgroundTransparency = 1local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
 ESPInventoryToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
 ESPInventoryToggle.Position = UDim2.new(0.1, 0, 0.10, 0)
 ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
@@ -367,7 +367,9 @@ PlayerListFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
 Instance.new("UICorner", PlayerListFrame).CornerRadius = UDim.new(0, 8)
 
 local PlayerListLayout = Instance.new("UIListLayout", PlayerListFrame)
-PlayerListLayout.Padding = UDim.new(0, 4)-- ================= VARIABLES =================
+PlayerListLayout.Padding = UDim.new(0, 4)
+
+-- ================= VARIABLES =================
 local espEnabledStatus = false
 local AimbotOn = false
 local FOVRadius = 110
@@ -854,6 +856,7 @@ ToggleBtn.MouseButton1Click:Connect(function()
 end)
 
 print("[AL-ADWANI] Script Loaded Successfully!")
+
 -- Notification
 pcall(function()
     local notif = Instance.new("TextLabel", ScreenGui2)
