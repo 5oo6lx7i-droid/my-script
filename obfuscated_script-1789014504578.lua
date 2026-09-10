@@ -854,3 +854,25 @@ ToggleBtn.MouseButton1Click:Connect(function()
 end)
 
 print("[AL-ADWANI] Script Loaded Successfully!")
+-- Notification
+pcall(function()
+    local notif = Instance.new("TextLabel", ScreenGui2)
+    notif.Size = UDim2.new(0, 220, 0, 35)
+    notif.Position = UDim2.new(0.5, -110, 0.85, 0)
+    notif.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+    notif.Text = "👼 AL-ADWANI HUB Loaded"
+    notif.TextColor3 = Color3.fromRGB(255, 215, 0)
+    notif.Font = Enum.Font.GothamBold
+    notif.TextSize = 11
+    Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
+    
+    task.delay(2.5, function()
+        notif:Remove()
+    end)
+end)
+
+print("[WELCOME] ========================================")
+print("[AL-ADWANI] ✅ Script Loaded")
+print("[AL-ADWANI] 👼 Golden Edition")
+print("[AL-ADWANI] ⚡ Car Aimbot Ready")
+print("[AL-ADWANI] ========================================")
