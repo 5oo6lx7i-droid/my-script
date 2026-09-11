@@ -298,7 +298,9 @@ ToggleButton.Visible = true
 
 local ToggleDrag = Instance.new("Frame", ToggleButton)
 ToggleDrag.Size = UDim2.new(1, 0, 1, 0)
-ToggleDrag.BackgroundTransparency = 1local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
+ToggleDrag.BackgroundTransparency = 1
+
+local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
 ESPInventoryToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
 ESPInventoryToggle.Position = UDim2.new(0.1, 0, 0.10, 0)
 ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
@@ -762,52 +764,7 @@ end)
 
 print("AL-ADWANI Script Loaded Successfully!")
 
--- ANOUAR | Quick Spectate - Instant watch and release
-repeat task.wait() until game:IsLoaded()
-local Players2 = game:GetService("Players")
-local Camera2 = workspace.CurrentCamera
-local LocalPlayer2 = Players2.LocalPlayer
-
-local function IsAlive2(char)
-    local humanoid = char and char:FindFirstChildOfClass("Humanoid")
-    return humanoid and humanoid.Health > 0
-end
-
-local function GetAnyAlivePlayer()
-    for _, p in ipairs(Players2:GetPlayers()) do
-        if p ~= LocalPlayer2 and p.Character and IsAlive2(p.Character) then
-            return p
-        end
-    end
-    return nil
-end
-
-local function QuickSpectate()
-    local target = GetAnyAlivePlayer()
-    if not target then return end
-    
-    if target.Character and target.Character:FindFirstChild("Humanoid") then
-        Camera2.CameraSubject = target.Character.Humanoid
-    end
-    
-    task.spawn(function()
-        task.wait(0.001)
-        if LocalPlayer2.Character and LocalPlayer2.Character:FindFirstChild("Humanoid") then
-            Camera2.CameraSubject = LocalPlayer2.Character.Humanoid
-        end
-    end)
-    
-    if ToggleBtn then
-        local backgroundColor3 = ToggleBtn.BackgroundColor3
-        ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-        task.spawn(function()
-            task.wait(0.05)
-            ToggleBtn.BackgroundColor3 = backgroundColor3
-        end)
-    end
-end
-
--- Create CAR AIMBOT Button
+-- CAR AIMBOT Button
 local ScreenGui2 = Instance.new("ScreenGui", game:GetService("CoreGui"))
 ScreenGui2.Name = "AL-ADWANI_CarAimbot"
 
@@ -824,38 +781,6 @@ Instance.new("UICorner", ToggleBtn).CornerRadius = UDim.new(0, 10)
 local strokeBtn = Instance.new("UIStroke", ToggleBtn)
 strokeBtn.Color = Color3.fromRGB(255, 215, 0)
 strokeBtn.Thickness = 2
-
--- Drag
-local dragging2 = false
-local ref3 = nil
-local ref4 = nil
-ToggleBtn.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging2 = true
-        ref3 = ToggleBtn.Position
-        ref4 = input.Position
-    end
-end)
-game:GetService("UserInputService").InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging2 = false
-    end
-end)
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if dragging2 and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - ref4
-        ToggleBtn.Position = UDim2.new(
-            ref3.X.Scale, ref3.X.Offset + delta.X,
-            ref3.Y.Scale, ref3.Y.Offset + delta.Y
-        )
-    end
-end)
-
-ToggleBtn.MouseButton1Click:Connect(function()
-    QuickSpectate()
-end)
-
-print("[AL-ADWANI] Script Loaded Successfully!")
 
 -- Notification
 pcall(function()
