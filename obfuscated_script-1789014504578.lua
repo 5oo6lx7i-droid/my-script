@@ -225,22 +225,92 @@ end
 for _, p in ipairs(Players:GetPlayers()) do createESP(p) end
 Players.PlayerAdded:Connect(createESP)
 
--- ================= INTERFACE =================
+-- ================= LANGUAGE SELECTOR =================
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
 ScreenGui.Name = "AL-ADWANI_HUB"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 
+-- قائمة اختيار اللغة
+local LangFrame = Instance.new("Frame", ScreenGui)
+LangFrame.Size = UDim2.new(0.3, 0, 0.3, 0)
+LangFrame.Position = UDim2.new(0.35, 0, 0.35, 0)
+LangFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+LangFrame.BorderSizePixel = 0
+Instance.new("UICorner", LangFrame).CornerRadius = UDim.new(0, 12)
+
+local LangStroke = Instance.new("UIStroke", LangFrame)
+LangStroke.Color = Color3.fromRGB(255, 215, 0)
+LangStroke.Thickness = 2
+
+local LangTitle = Instance.new("TextLabel", LangFrame)
+LangTitle.Size = UDim2.new(1, 0, 0.2, 0)
+LangTitle.Position = UDim2.new(0, 0, 0.05, 0)
+LangTitle.BackgroundTransparency = 1
+LangTitle.Text = "Select Language / اختر اللغة"
+LangTitle.TextColor3 = Color3.fromRGB(255, 215, 0)
+LangTitle.TextScaled = true
+LangTitle.Font = Enum.Font.GothamBold
+
+local EnglishBtn = Instance.new("TextButton", LangFrame)
+EnglishBtn.Size = UDim2.new(0.8, 0, 0.25, 0)
+EnglishBtn.Position = UDim2.new(0.1, 0, 0.35, 0)
+EnglishBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+EnglishBtn.Text = "🇺🇸 English"
+EnglishBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+EnglishBtn.TextScaled = true
+EnglishBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", EnglishBtn).CornerRadius = UDim.new(0, 8)
+
+local ArabicBtn = Instance.new("TextButton", LangFrame)
+ArabicBtn.Size = UDim2.new(0.8, 0, 0.25, 0)
+ArabicBtn.Position = UDim2.new(0.1, 0, 0.68, 0)
+ArabicBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+ArabicBtn.Text = "🇰🇼 العربية"
+ArabicBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+ArabicBtn.TextScaled = true
+ArabicBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", ArabicBtn).CornerRadius = UDim.new(0, 8)
+
+-- ================= TRANSLATIONS =================
+local translations = {
+    en = {
+        title = "🪽 AL-ADWANI HACK 🪽",
+        espInv = "ESP Inventory",
+        esp = "ESP",
+        aimbot = "Aimbot",
+        wallcheck = "Wallcheck",
+        fov = "FOV",
+        target = "Target: Head (fixed)",
+        fovCircle = "FOV Circle",
+        copyDiscord = "📋 Copy Discord",
+        toggleCircle = "⭕ Toggle FOV Circle",
+    },
+    ar = {
+        title = "🪽 AL-ADWANI HACK 🪽",
+        espInv = "جرد ESP",
+        esp = "ESP",
+        aimbot = "إيم بوت",
+        wallcheck = "Wallcheck",
+        fov = "FOV",
+        target = "الهدف: الرأس",
+        fovCircle = "دائرة المدى",
+        copyDiscord = "📋 نسخ الديسكورد",
+        toggleCircle = "⭕ دائرة المدى",
+    },
+}
+
+-- ================= MAIN GUI =================
 local MainFrame = Instance.new("Frame", ScreenGui)
-MainFrame.Size = UDim2.new(0.4, 0, 0.7, 0)
-MainFrame.Position = UDim2.new(0.3, 0, 0.15, 0)
+MainFrame.Size = UDim2.new(0.4, 0, 0.85, 0)
+MainFrame.Position = UDim2.new(0.3, 0, 0.08, 0)
 MainFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
 Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0,8)
 
 local TitleLabel = Instance.new("TextLabel", MainFrame)
-TitleLabel.Size = UDim2.new(0.9,0,0.08,0)
+TitleLabel.Size = UDim2.new(0.9,0,0.06,0)
 TitleLabel.Position = UDim2.new(0.05,0,0.02,0)
 TitleLabel.BackgroundTransparency = 1
 TitleLabel.Text = "🪽 AL-ADWANI HACK | Protected: 0 🪽"
@@ -249,7 +319,7 @@ TitleLabel.TextScaled = true
 TitleLabel.Font = Enum.Font.SourceSansBold
 
 local MainDrag = Instance.new("Frame", MainFrame)
-MainDrag.Size = UDim2.new(1,0,0.1,0)
+MainDrag.Size = UDim2.new(1,0,0.08,0)
 MainDrag.BackgroundTransparency = 1
 
 local ToggleButton = Instance.new("TextButton", ScreenGui)
@@ -267,7 +337,7 @@ ToggleDrag.Size = UDim2.new(1,0,1,0)
 ToggleDrag.BackgroundTransparency = 1
 
 local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
-ESPInventoryToggle.Size = UDim2.new(0.8,0,0.10,0)
+ESPInventoryToggle.Size = UDim2.new(0.8,0,0.09,0)
 ESPInventoryToggle.Position = UDim2.new(0.1,0,0.10,0)
 ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 ESPInventoryToggle.Text = "ESP Inventory: ON"
@@ -275,24 +345,24 @@ ESPInventoryToggle.TextScaled = true
 Instance.new("UICorner", ESPInventoryToggle).CornerRadius = UDim.new(0,8)
 
 local ESPToggle = Instance.new("TextButton", MainFrame)
-ESPToggle.Size = UDim2.new(0.8,0,0.10,0)
-ESPToggle.Position = UDim2.new(0.1,0,0.22,0)
+ESPToggle.Size = UDim2.new(0.8,0,0.09,0)
+ESPToggle.Position = UDim2.new(0.1,0,0.21,0)
 ESPToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
 ESPToggle.Text = "ESP: OFF"
 ESPToggle.TextScaled = true
 Instance.new("UICorner", ESPToggle).CornerRadius = UDim.new(0,8)
 
 local AimbotToggle = Instance.new("TextButton", MainFrame)
-AimbotToggle.Size = UDim2.new(0.8,0,0.10,0)
-AimbotToggle.Position = UDim2.new(0.1,0,0.34,0)
+AimbotToggle.Size = UDim2.new(0.8,0,0.09,0)
+AimbotToggle.Position = UDim2.new(0.1,0,0.32,0)
 AimbotToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
 AimbotToggle.Text = "Aimbot: OFF"
 AimbotToggle.TextScaled = true
 Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0,8)
 
 local WallcheckToggle = Instance.new("TextButton", MainFrame)
-WallcheckToggle.Size = UDim2.new(0.8,0,0.10,0)
-WallcheckToggle.Position = UDim2.new(0.1,0,0.46,0)
+WallcheckToggle.Size = UDim2.new(0.8,0,0.09,0)
+WallcheckToggle.Position = UDim2.new(0.1,0,0.43,0)
 WallcheckToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 WallcheckToggle.Text = "Wallcheck: ON"
 WallcheckToggle.TextScaled = true
@@ -300,8 +370,8 @@ WallcheckToggle.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", WallcheckToggle).CornerRadius = UDim.new(0,8)
 
 local FOVSlider = Instance.new("TextBox", MainFrame)
-FOVSlider.Size = UDim2.new(0.8,0,0.10,0)
-FOVSlider.Position = UDim2.new(0.1,0,0.58,0)
+FOVSlider.Size = UDim2.new(0.8,0,0.09,0)
+FOVSlider.Position = UDim2.new(0.1,0,0.54,0)
 FOVSlider.BackgroundColor3 = Color3.fromRGB(50,50,50)
 FOVSlider.Text = "FOV: 110"
 FOVSlider.TextColor3 = Color3.fromRGB(255,0,0)
@@ -309,8 +379,8 @@ FOVSlider.TextScaled = true
 Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0,8)
 
 local AimPartToggle = Instance.new("TextButton", MainFrame)
-AimPartToggle.Size = UDim2.new(0.8,0,0.10,0)
-AimPartToggle.Position = UDim2.new(0.1,0,0.70,0)
+AimPartToggle.Size = UDim2.new(0.8,0,0.09,0)
+AimPartToggle.Position = UDim2.new(0.1,0,0.65,0)
 AimPartToggle.BackgroundColor3 = Color3.fromRGB(100,100,255)
 AimPartToggle.Text = "Target: Head (fixed)"
 AimPartToggle.TextScaled = true
@@ -318,8 +388,8 @@ AimPartToggle.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", AimPartToggle).CornerRadius = UDim.new(0,8)
 
 local FOVCircleToggle = Instance.new("TextButton", MainFrame)
-FOVCircleToggle.Size = UDim2.new(0.8,0,0.10,0)
-FOVCircleToggle.Position = UDim2.new(0.1,0,0.82,0)
+FOVCircleToggle.Size = UDim2.new(0.8,0,0.09,0)
+FOVCircleToggle.Position = UDim2.new(0.1,0,0.76,0)
 FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 FOVCircleToggle.Text = "FOV Circle: ON"
 FOVCircleToggle.TextScaled = true
@@ -329,7 +399,7 @@ Instance.new("UICorner", FOVCircleToggle).CornerRadius = UDim.new(0,8)
 -- ================= NEW BUTTONS =================
 local CopyDiscordBtn = Instance.new("TextButton", MainFrame)
 CopyDiscordBtn.Size = UDim2.new(0.8,0,0.08,0)
-CopyDiscordBtn.Position = UDim2.new(0.1,0,0.94,0)
+CopyDiscordBtn.Position = UDim2.new(0.1,0,0.87,0)
 CopyDiscordBtn.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
 CopyDiscordBtn.Text = "📋 Copy Discord"
 CopyDiscordBtn.TextScaled = true
@@ -338,7 +408,7 @@ Instance.new("UICorner", CopyDiscordBtn).CornerRadius = UDim.new(0,8)
 
 local ToggleCircleBtn = Instance.new("TextButton", MainFrame)
 ToggleCircleBtn.Size = UDim2.new(0.8,0,0.08,0)
-ToggleCircleBtn.Position = UDim2.new(0.1,0,1.03,0)
+ToggleCircleBtn.Position = UDim2.new(0.1,0,0.97,0)
 ToggleCircleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
 ToggleCircleBtn.Text = "⭕ Toggle FOV Circle"
 ToggleCircleBtn.TextScaled = true
@@ -346,8 +416,8 @@ ToggleCircleBtn.TextColor3 = Color3.fromRGB(0,0,0)
 Instance.new("UICorner", ToggleCircleBtn).CornerRadius = UDim.new(0,8)
 
 local PlayerListFrame = Instance.new("ScrollingFrame", MainFrame)
-PlayerListFrame.Size = UDim2.new(0.8,0,0.2,0)
-PlayerListFrame.Position = UDim2.new(0.1,0,0.80,0)
+PlayerListFrame.Size = UDim2.new(0.8,0,0.15,0)
+PlayerListFrame.Position = UDim2.new(0.1,0,0.70,0)
 PlayerListFrame.BackgroundColor3 = Color3.fromRGB(30,30,30)
 PlayerListFrame.ScrollBarThickness = 6
 PlayerListFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
@@ -368,6 +438,7 @@ local PlayerButtons = {}
 local AIM_SMOOTHNESS = 0.8
 local PREDICTION_TIME = 0.03
 local guiOpen = false
+local currentLang = translations.en
 
 local FOVCircle = Drawing.new("Circle")
 FOVCircle.Radius = FOVRadius
@@ -629,7 +700,7 @@ end)
 -- ================= BUTTONS =================
 ESPToggle.MouseButton1Click:Connect(function()
     espEnabledStatus = not espEnabledStatus
-    ESPToggle.Text = "ESP: " .. (espEnabledStatus and "ON" or "OFF")
+    ESPToggle.Text = currentLang.esp .. ": " .. (espEnabledStatus and "ON" or "OFF")
     ESPToggle.BackgroundColor3 = espEnabledStatus and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
     for _, p in Players:GetPlayers() do
         if p ~= LocalPlayer and p.Character then
@@ -644,20 +715,20 @@ end)
 
 AimbotToggle.MouseButton1Click:Connect(function()
     AimbotOn = not AimbotOn
-    AimbotToggle.Text = "Aimbot: " .. (AimbotOn and "ON" or "OFF")
+    AimbotToggle.Text = currentLang.aimbot .. ": " .. (AimbotOn and "ON" or "OFF")
     AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
 end)
 
 AimPartToggle.MouseButton1Click:Connect(function()
     currentModeIndex = currentModeIndex % #AIM_MODES + 1
     local mode = AIM_MODES[currentModeIndex]
-    AimPartToggle.Text = "Target: " .. mode.name
+    AimPartToggle.Text = currentLang.target .. ": " .. mode.name
     AimPartToggle.BackgroundColor3 = mode.color
 end)
 
 WallcheckToggle.MouseButton1Click:Connect(function()
     WallCheckEnabled = not WallCheckEnabled
-    WallcheckToggle.Text = "Wallcheck: " .. (WallCheckEnabled and "ON" or "OFF")
+    WallcheckToggle.Text = currentLang.wallcheck .. ": " .. (WallCheckEnabled and "ON" or "OFF")
     WallcheckToggle.BackgroundColor3 = WallCheckEnabled and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,100,100)
 end)
 
@@ -667,22 +738,22 @@ FOVSlider.FocusLost:Connect(function(enterPressed)
         if num and num >= 20 and num <= 600 then
             FOVRadius = num
             FOVCircle.Radius = num
-            FOVSlider.Text = "FOV: " .. num
+            FOVSlider.Text = currentLang.fov .. ": " .. num
         else
-            FOVSlider.Text = "FOV: " .. FOVRadius
+            FOVSlider.Text = currentLang.fov .. ": " .. FOVRadius
         end
     end
 end)
 
 FOVCircleToggle.MouseButton1Click:Connect(function()
     FOVCircleVisible = not FOVCircleVisible
-    FOVCircleToggle.Text = "FOV Circle: " .. (FOVCircleVisible and "ON" or "OFF")
+    FOVCircleToggle.Text = currentLang.fovCircle .. ": " .. (FOVCircleVisible and "ON" or "OFF")
     FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
 end)
 
 ESPInventoryToggle.MouseButton1Click:Connect(function()
     espInventoryEnabled = not espInventoryEnabled
-    ESPInventoryToggle.Text = "ESP Inventory: " .. (espInventoryEnabled and "ON" or "OFF")
+    ESPInventoryToggle.Text = currentLang.espInv .. ": " .. (espInventoryEnabled and "ON" or "OFF")
     ESPInventoryToggle.BackgroundColor3 = espInventoryEnabled and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
     for _, p in ipairs(Players:GetPlayers()) do
         updateESP(p)
@@ -696,7 +767,7 @@ CopyDiscordBtn.MouseButton1Click:Connect(function()
     end)
     CopyDiscordBtn.Text = "✅ Copied!"
     task.delay(2, function()
-        CopyDiscordBtn.Text = "📋 Copy Discord"
+        CopyDiscordBtn.Text = currentLang.copyDiscord
     end)
 end)
 
@@ -709,6 +780,41 @@ ToggleCircleBtn.MouseButton1Click:Connect(function()
         ToggleCircleBtn.Text = "⭕ FOV Circle: ON"
         ToggleCircleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
     end
+end)
+
+-- ================= LANGUAGE BUTTONS =================
+EnglishBtn.MouseButton1Click:Connect(function()
+    currentLang = translations.en
+    LangFrame.Visible = false
+    MainFrame.Visible = true
+    
+    TitleLabel.Text = currentLang.title
+    ESPInventoryToggle.Text = currentLang.espInv .. ": ON"
+    ESPToggle.Text = currentLang.esp .. ": OFF"
+    AimbotToggle.Text = currentLang.aimbot .. ": OFF"
+    WallcheckToggle.Text = currentLang.wallcheck .. ": ON"
+    FOVSlider.Text = currentLang.fov .. ": 110"
+    AimPartToggle.Text = currentLang.target
+    FOVCircleToggle.Text = currentLang.fovCircle .. ": ON"
+    CopyDiscordBtn.Text = currentLang.copyDiscord
+    ToggleCircleBtn.Text = currentLang.toggleCircle
+end)
+
+ArabicBtn.MouseButton1Click:Connect(function()
+    currentLang = translations.ar
+    LangFrame.Visible = false
+    MainFrame.Visible = true
+    
+    TitleLabel.Text = currentLang.title
+    ESPInventoryToggle.Text = currentLang.espInv .. ": ON"
+    ESPToggle.Text = currentLang.esp .. ": OFF"
+    AimbotToggle.Text = currentLang.aimbot .. ": OFF"
+    WallcheckToggle.Text = currentLang.wallcheck .. ": ON"
+    FOVSlider.Text = currentLang.fov .. ": 110"
+    AimPartToggle.Text = currentLang.target
+    FOVCircleToggle.Text = currentLang.fovCircle .. ": ON"
+    CopyDiscordBtn.Text = currentLang.copyDiscord
+    ToggleCircleBtn.Text = currentLang.toggleCircle
 end)
 
 -- ================= DRAG FUNCTIONS =================
@@ -763,10 +869,10 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
         if FOVCircleToggle then
             if FOVCircleForcedOff then
                 FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(150,150,150)
-                FOVCircleToggle.Text = "FOV Circle: FORCED OFF (K)"
+                FOVCircleToggle.Text = currentLang.fovCircle .. ": FORCED OFF (K)"
             else
                 FOVCircleToggle.BackgroundColor3 = FOVCircleVisible and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
-                FOVCircleToggle.Text = "FOV Circle: " .. (FOVCircleVisible and "ON" or "OFF")
+                FOVCircleToggle.Text = currentLang.fovCircle .. ": " .. (FOVCircleVisible and "ON" or "OFF")
             end
         end
     end
