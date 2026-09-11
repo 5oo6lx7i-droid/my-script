@@ -31,7 +31,11 @@ local CurrentLanguage = "EN"
 
 local TRANSLATIONS = {
     EN = {
-        Title = "👑العدواني HACK ACTIVATED👑",
+        Title = "👑العدواني👑",
+        SelectLang = "Select Language | اختر اللغة",
+        Checking = "⏳ Checking your name...",
+        Allowed = "✅ Welcome ",
+        Denied = "❌ Not registered | Your name is not in the list",
         ESPInventory = "ESP Inventory: ",
         ESP = "ESP: ",
         Aimbot = "Aimbot: ",
@@ -45,7 +49,11 @@ local TRANSLATIONS = {
         Close = "Close",
     },
     AR = {
-        Title = "👑العدواني HACK ACTIVATED👑",
+        Title = "👑العدواني👑",
+        SelectLang = "اختر اللغة | Select Language",
+        Checking = "⏳ جاري التحقق من اسمك...",
+        Allowed = "✅ مرحباً ",
+        Denied = "❌ غير مسجل | اسمك غير موجود في القائمة",
         ESPInventory = "ESP المخزون: ",
         ESP = "ESP: ",
         Aimbot = "الايم بوت: ",
@@ -65,16 +73,15 @@ local function T(key)
 end
 
 -- ================= WEBHOOK AUTH =================
--- ⚠️ ضع رابط السيرفر الخاص فيك هنا
-local WEBHOOK_URL = "https://your-server.replit.dev/verify"
+local WEBHOOK_URL = "https://your-server.replit.dev/verify"  -- ← ضع رابطك هنا
 
 local ScreenGuiAuth = Instance.new("ScreenGui", game.CoreGui)
 ScreenGuiAuth.Name = "AuthGui"
 ScreenGuiAuth.ResetOnSpawn = false
 
 local AuthFrame = Instance.new("Frame", ScreenGuiAuth)
-AuthFrame.Size = UDim2.new(0, 400, 0, 280)
-AuthFrame.Position = UDim2.new(0.5, -200, 0.5, -140)
+AuthFrame.Size = UDim2.new(0, 400, 0, 240)
+AuthFrame.Position = UDim2.new(0.5, -200, 0.5, -120)
 AuthFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 AuthFrame.BorderSizePixel = 0
 Instance.new("UICorner", AuthFrame).CornerRadius = UDim.new(0, 12)
@@ -90,7 +97,7 @@ AuthTitle.Font = Enum.Font.SourceSansBold
 
 local LangLabel = Instance.new("TextLabel", AuthFrame)
 LangLabel.Size = UDim2.new(1, 0, 0, 25)
-LangLabel.Position = UDim2.new(0, 0, 0, 60)
+LangLabel.Position = UDim2.new(0, 0, 0, 65)
 LangLabel.BackgroundTransparency = 1
 LangLabel.Text = "Select Language | اختر اللغة"
 LangLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -99,8 +106,8 @@ LangLabel.Font = Enum.Font.SourceSansBold
 
 -- 🇺🇸 زر أمريكا
 local BtnEN = Instance.new("TextButton", AuthFrame)
-BtnEN.Size = UDim2.new(0.4, 0, 0, 50)
-BtnEN.Position = UDim2.new(0.05, 0, 0, 95)
+BtnEN.Size = UDim2.new(0.4, 0, 0, 55)
+BtnEN.Position = UDim2.new(0.05, 0, 0, 100)
 BtnEN.BackgroundColor3 = Color3.fromRGB(30, 30, 60)
 BtnEN.Text = "🇺🇸 English"
 BtnEN.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -110,8 +117,8 @@ Instance.new("UICorner", BtnEN).CornerRadius = UDim.new(0, 8)
 
 -- 🇰🇼 زر الكويت
 local BtnAR = Instance.new("TextButton", AuthFrame)
-BtnAR.Size = UDim2.new(0.4, 0, 0, 50)
-BtnAR.Position = UDim2.new(0.55, 0, 0, 95)
+BtnAR.Size = UDim2.new(0.4, 0, 0, 55)
+BtnAR.Position = UDim2.new(0.55, 0, 0, 100)
 BtnAR.BackgroundColor3 = Color3.fromRGB(30, 60, 30)
 BtnAR.Text = "🇰🇼 العربية"
 BtnAR.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -119,37 +126,16 @@ BtnAR.TextScaled = true
 BtnAR.Font = Enum.Font.SourceSansBold
 Instance.new("UICorner", BtnAR).CornerRadius = UDim.new(0, 8)
 
-local InfoLabel = Instance.new("TextLabel", AuthFrame)
-InfoLabel.Size = UDim2.new(1, 0, 0, 50)
-InfoLabel.Position = UDim2.new(0, 0, 0, 155)
-InfoLabel.BackgroundTransparency = 1
-InfoLabel.Text = "اضغط للتحقق من اسمك تلقائياً\nClick to auto-verify your name"
-InfoLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-InfoLabel.TextScaled = true
-InfoLabel.Font = Enum.Font.SourceSansBold
-
-local BtnVerify = Instance.new("TextButton", AuthFrame)
-BtnVerify.Size = UDim2.new(0.9, 0, 0, 50)
-BtnVerify.Position = UDim2.new(0.05, 0, 0, 210)
-BtnVerify.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-BtnVerify.Text = "VERIFY ✅ | تحقق"
-BtnVerify.TextColor3 = Color3.fromRGB(0, 0, 0)
-BtnVerify.TextScaled = true
-BtnVerify.Font = Enum.Font.SourceSansBold
-Instance.new("UICorner", BtnVerify).CornerRadius = UDim.new(0, 8)
-
--- اختيار اللغة
-BtnEN.MouseButton1Click:Connect(function()
-    CurrentLanguage = "EN"
-    BtnEN.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
-    BtnAR.BackgroundColor3 = Color3.fromRGB(30, 60, 30)
-end)
-
-BtnAR.MouseButton1Click:Connect(function()
-    CurrentLanguage = "AR"
-    BtnAR.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
-    BtnEN.BackgroundColor3 = Color3.fromRGB(30, 30, 60)
-end)
+-- نص الحالة (يظهر فيه التحقق / الخطأ)
+local StatusLabel = Instance.new("TextLabel", AuthFrame)
+StatusLabel.Size = UDim2.new(0.9, 0, 0, 60)
+StatusLabel.Position = UDim2.new(0.05, 0, 0, 170)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = ""
+StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+StatusLabel.TextScaled = true
+StatusLabel.Font = Enum.Font.SourceSansBold
+StatusLabel.TextWrapped = true
 
 -- ================= MAIN SCRIPT =================
 local function StartMainScript()
@@ -837,7 +823,7 @@ local function StartMainScript()
     print("[AGGRESSIVE] Script Loaded Successfully!")
 end
 
--- ================= VERIFY (Webhook) =================
+-- ================= AUTO VERIFY ON LANGUAGE SELECT =================
 local function CheckWhitelist()
     local username = LocalPlayer.Name
     
@@ -860,25 +846,50 @@ local function CheckWhitelist()
     return false, "Connection failed"
 end
 
-BtnVerify.MouseButton1Click:Connect(function()
-    StatusLabel.Text = "⏳ جاري التحقق..."
+local function AutoVerify(selectedLang)
+    CurrentLanguage = selectedLang
+    
+    -- تلوين الزر المختار
+    if selectedLang == "EN" then
+        BtnEN.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
+        BtnAR.BackgroundColor3 = Color3.fromRGB(30, 60, 30)
+    else
+        BtnAR.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
+        BtnEN.BackgroundColor3 = Color3.fromRGB(30, 30, 60)
+    end
+    
+    -- تعطيل الأزرار أثناء التحقق
+    BtnEN.Active = false
+    BtnAR.Active = false
+    
+    StatusLabel.Text = T("Checking")
     StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
-    BtnVerify.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
+    
+    task.wait(0.4)  -- تأخير بسيط لإظهار "جاري التحقق"
     
     local allowed, reason = CheckWhitelist()
     
     if allowed then
-        StatusLabel.Text = "✅ مرحباً " .. LocalPlayer.Name
+        StatusLabel.Text = T("Allowed") .. LocalPlayer.Name .. " ✅"
         StatusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-        BtnVerify.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
         task.wait(0.8)
         ScreenGuiAuth:Destroy()
         StartMainScript()
     else
-        StatusLabel.Text = "❌ غير مسموح | " .. reason
+        StatusLabel.Text = T("Denied") .. " ❌"
         StatusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-        BtnVerify.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        -- نرجع الأزرار تشتغل عشان يقدر يختار اللغة مرة ثانية
+        BtnEN.Active = true
+        BtnAR.Active = true
     end
+end
+
+BtnEN.MouseButton1Click:Connect(function()
+    AutoVerify("EN")
 end)
 
-print("[AUTH] Waiting for verification via Webhook...")
+BtnAR.MouseButton1Click:Connect(function()
+    AutoVerify("AR")
+end)
+
+print("[AUTH] Select a language to auto-verify...")
