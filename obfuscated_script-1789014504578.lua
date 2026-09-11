@@ -1,4 +1,4 @@
--- Anouar777x Script - Fully Decrypted & Unlocked
+-- AL-ADWANI Script - Fully Decrypted & Unlocked
 -- All protections removed
 
 local Players = game:GetService("Players")
@@ -200,7 +200,7 @@ Players.PlayerAdded:Connect(createESP)
 
 -- ================= INTERFACE =================
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-ScreenGui.Name = "Anouar777x_HUB"
+ScreenGui.Name = "AL-ADWANI_HUB"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 
@@ -216,7 +216,7 @@ local TitleLabel = Instance.new("TextLabel", MainFrame)
 TitleLabel.Size = UDim2.new(0.8,0,0.08,0)
 TitleLabel.Position = UDim2.new(0.1,0,0.02,0)
 TitleLabel.BackgroundTransparency = 1
-TitleLabel.Text = "🔥 ANOUAR777x HACK ACTIVATED 🔥"
+TitleLabel.Text = "🔥 AL-ADWANI HACK ACTIVATED 🔥"
 TitleLabel.TextColor3 = Color3.fromRGB(0,255,0)
 TitleLabel.TextScaled = true
 TitleLabel.Font = Enum.Font.SourceSansBold
@@ -336,8 +336,8 @@ local AIM_MODES = {
     {name = "Torso (fixed)",              part = "HumanoidRootPart",            color = Color3.fromRGB(255,150,50)},
     {name = "Right Arm (fixed)",          part = "RightUpperArm",               color = Color3.fromRGB(50,205,50)},
     {name = "Left Arm (fixed)",           part = "LeftUpperArm",                color = Color3.fromRGB(50,255,150)},
-    {name = "Auto Switch (Head ↔ Torso)", parts = {"Head", "HumanoidRootPart"}, color = Color3.fromRGB(180,100,255)},
-    {name = "Auto Switch (Right ↔ Left Arm)", parts = {"RightUpperArm", "LeftUpperArm"}, color = Color3.fromRGB(255, 255, 0)} 
+    {name = "Auto Switch (Head <> Torso)", parts = {"Head", "HumanoidRootPart"}, color = Color3.fromRGB(180,100,255)},
+    {name = "Auto Switch (Right <> Left Arm)", parts = {"RightUpperArm", "LeftUpperArm"}, color = Color3.fromRGB(255, 255, 0)} 
 }
 
 local currentModeIndex = 1
@@ -366,10 +366,10 @@ local function removeESP(char)
     if char then
         local head = char:FindFirstChild("Head")
         if head then 
-            local b = head:FindFirstChild("AnouarNameHP") 
+            local b = head:FindFirstChild("AL-ADWANI_NameHP") 
             if b then b:Destroy() end 
         end
-        local h = char:FindFirstChild("AnouarHighlight") 
+        local h = char:FindFirstChild("AL-ADWANI_Highlight") 
         if h then h:Destroy() end
     end
 end
@@ -384,7 +384,7 @@ local function applyESP(char)
     if not head or not hum or not IsAlive(char) then return end
 
     local bill = Instance.new("BillboardGui", head)
-    bill.Name = "AnouarNameHP"
+    bill.Name = "AL-ADWANI_NameHP"
     bill.Adornee = head
     bill.Size = UDim2.new(0,160,0,35)
     bill.StudsOffset = Vector3.new(0,2.8,0)
@@ -432,7 +432,7 @@ local function applyESP(char)
     updateHP()
 
     local hl = Instance.new("Highlight", char)
-    hl.Name = "AnouarHighlight"
+    hl.Name = "AL-ADWANI_Highlight"
     hl.OutlineColor = Color3.fromRGB(255,255,0)
     hl.OutlineTransparency = 0
     hl.FillTransparency = 1
@@ -465,7 +465,7 @@ RunService.Heartbeat:Connect(function()
         for _, p in Players:GetPlayers() do
             if p ~= LocalPlayer and p.Character then
                 local head = p.Character:FindFirstChild("Head")
-                if head and not head:FindFirstChild("AnouarNameHP") then
+                if head and not head:FindFirstChild("AL-ADWANI_NameHP") then
                     applyESP(p.Character)
                 end
             end
@@ -496,7 +496,7 @@ local function UpdateProtectedList()
     end
     local count = 0 
     for _ in pairs(ProtectedPlayers) do count = count + 1 end
-    TitleLabel.Text = "🔥 ANOUAR777x HACK | Protected: " .. count .. " 🔥"
+    TitleLabel.Text = "🔥 AL-ADWANI HACK | Protected: " .. count .. " 🔥"
 end
 
 Players.PlayerAdded:Connect(UpdateProtectedList)
@@ -704,9 +704,9 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
-print("Anouar777x Script Loaded Successfully - No Protection!")
+print("AL-ADWANI Script Loaded Successfully - No Protection!")
 
--- ANOUAR | Quick Spectate - Instant watch and release (Fastest version)
+-- AL-ADWANI | Quick Spectate - Instant watch and release (Fastest version)
 repeat task.wait() until game:IsLoaded()
 local Players = game:GetService("Players")
 local Camera = workspace.CurrentCamera
@@ -765,7 +765,7 @@ ScreenGui.Name = "L3K_QuickSpectate"
 local ToggleBtn = Instance.new("TextButton", ScreenGui)
 ToggleBtn.Size = UDim2.new(0, 100, 0, 45)
 ToggleBtn.Position = UDim2.new(0, 20, 0.5, -22)
-ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ToggleBtn.Text = "⚡ SPECTATE"
 ToggleBtn.TextColor3 = Color3.new(0, 0, 0)
 ToggleBtn.Font = Enum.Font.GothamBold
@@ -818,7 +818,7 @@ pcall(function()
 end)
 
 print("[WELCOME] ========================================")
-print("[ANOUAR] ✅ Fastest version - Instant spectate")
-print("[ANOUAR] 🎮 Click = spectate player then release instantly")
-print("[ANOUAR] ⚡ Only 0.001 seconds!")
-print("[ANOUAR] ========================================")
+print("[AL-ADWANI] ✅ Fastest version - Instant spectate")
+print("[AL-ADWANI] 🎮 Click = spectate player then release instantly")
+print("[AL-ADWANI] ⚡ Only 0.001 seconds!")
+print("[AL-ADWANI] ========================================")
