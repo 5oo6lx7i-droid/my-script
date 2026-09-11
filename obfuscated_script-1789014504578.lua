@@ -6,6 +6,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StarterPack = game:GetService("StarterPack")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
+local HttpService = game:GetService("HttpService")
 local Camera = workspace.CurrentCamera
 local LocalPlayer = Players.LocalPlayer
 
@@ -26,7 +27,7 @@ local RARITY_COLORS = {
 }
 
 -- ================= LANGUAGE SYSTEM =================
-local CurrentLanguage = "EN" -- EN or AR
+local CurrentLanguage = "EN"
 
 local TRANSLATIONS = {
     EN = {
@@ -63,8 +64,9 @@ local function T(key)
     return TRANSLATIONS[CurrentLanguage][key] or key
 end
 
--- ================= AUTH SYSTEM =================
-local AUTH_BOT_KEY = "AGGRESSIVE_KEY_2025" -- المفتاح الخاص بالبوت
+-- ================= WEBHOOK AUTH =================
+-- ⚠️ ضع رابط السيرفر الخاص فيك هنا
+local WEBHOOK_URL = "https://your-server.replit.dev/verify"
 
 local ScreenGuiAuth = Instance.new("ScreenGui", game.CoreGui)
 ScreenGuiAuth.Name = "AuthGui"
@@ -95,7 +97,7 @@ LangLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 LangLabel.TextScaled = true
 LangLabel.Font = Enum.Font.SourceSansBold
 
--- زر علم أمريكا 🇺🇸
+-- 🇺🇸 زر أمريكا
 local BtnEN = Instance.new("TextButton", AuthFrame)
 BtnEN.Size = UDim2.new(0.4, 0, 0, 50)
 BtnEN.Position = UDim2.new(0.05, 0, 0, 95)
@@ -106,7 +108,7 @@ BtnEN.TextScaled = true
 BtnEN.Font = Enum.Font.SourceSansBold
 Instance.new("UICorner", BtnEN).CornerRadius = UDim.new(0, 8)
 
--- زر علم الكويت 🇰🇼
+-- 🇰🇼 زر الكويت
 local BtnAR = Instance.new("TextButton", AuthFrame)
 BtnAR.Size = UDim2.new(0.4, 0, 0, 50)
 BtnAR.Position = UDim2.new(0.55, 0, 0, 95)
@@ -117,45 +119,24 @@ BtnAR.TextScaled = true
 BtnAR.Font = Enum.Font.SourceSansBold
 Instance.new("UICorner", BtnAR).CornerRadius = UDim.new(0, 8)
 
-local KeyLabel = Instance.new("TextLabel", AuthFrame)
-KeyLabel.Size = UDim2.new(1, 0, 0, 25)
-KeyLabel.Position = UDim2.new(0, 0, 0, 155)
-KeyLabel.BackgroundTransparency = 1
-KeyLabel.Text = "Enter Bot Key | ادخل مفتاح البوت"
-KeyLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-KeyLabel.TextScaled = true
-KeyLabel.Font = Enum.Font.SourceSansBold
-
-local KeyInput = Instance.new("TextBox", AuthFrame)
-KeyInput.Size = UDim2.new(0.9, 0, 0, 40)
-KeyInput.Position = UDim2.new(0.05, 0, 0, 185)
-KeyInput.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-KeyInput.PlaceholderText = "Bot Key..."
-KeyInput.Text = ""
-KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
-KeyInput.TextScaled = true
-KeyInput.Font = Enum.Font.SourceSansBold
-KeyInput.ClearTextOnFocus = false
-Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
+local InfoLabel = Instance.new("TextLabel", AuthFrame)
+InfoLabel.Size = UDim2.new(1, 0, 0, 50)
+InfoLabel.Position = UDim2.new(0, 0, 0, 155)
+InfoLabel.BackgroundTransparency = 1
+InfoLabel.Text = "اضغط للتحقق من اسمك تلقائياً\nClick to auto-verify your name"
+InfoLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+InfoLabel.TextScaled = true
+InfoLabel.Font = Enum.Font.SourceSansBold
 
 local BtnVerify = Instance.new("TextButton", AuthFrame)
-BtnVerify.Size = UDim2.new(0.9, 0, 0, 40)
-BtnVerify.Position = UDim2.new(0.05, 0, 0, 230)
+BtnVerify.Size = UDim2.new(0.9, 0, 0, 50)
+BtnVerify.Position = UDim2.new(0.05, 0, 0, 210)
 BtnVerify.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-BtnVerify.Text = "VERIFY ✅"
+BtnVerify.Text = "VERIFY ✅ | تحقق"
 BtnVerify.TextColor3 = Color3.fromRGB(0, 0, 0)
 BtnVerify.TextScaled = true
 BtnVerify.Font = Enum.Font.SourceSansBold
 Instance.new("UICorner", BtnVerify).CornerRadius = UDim.new(0, 8)
-
-local StatusLabel = Instance.new("TextLabel", AuthFrame)
-StatusLabel.Size = UDim2.new(1, 0, 0, 20)
-StatusLabel.Position = UDim2.new(0, 0, 0, 240)
-StatusLabel.BackgroundTransparency = 1
-StatusLabel.Text = ""
-StatusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
-StatusLabel.TextScaled = true
-StatusLabel.Font = Enum.Font.SourceSansBold
 
 -- اختيار اللغة
 BtnEN.MouseButton1Click:Connect(function()
@@ -170,10 +151,8 @@ BtnAR.MouseButton1Click:Connect(function()
     BtnEN.BackgroundColor3 = Color3.fromRGB(30, 30, 60)
 end)
 
--- ================= MAIN SCRIPT (يشتغل بعد التحقق) =================
+-- ================= MAIN SCRIPT =================
 local function StartMainScript()
-    -- ⬇️ هنا يبدأ السكربت الرئيسي
-    
     local function getRealName(t)
         if not t or not t.Name then return nil end
         local originalName = t.Name
@@ -310,7 +289,7 @@ local function StartMainScript()
     local MainFrame = Instance.new("Frame", ScreenGui)
     MainFrame.Size = UDim2.new(0.4, 0, 0.65, 0)
     MainFrame.Position = UDim2.new(0.3, 0, 0.18, 0)
-    MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- ⚪ أبيض
+    MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     MainFrame.BorderSizePixel = 0
     MainFrame.Visible = false
     Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
@@ -405,7 +384,7 @@ local function StartMainScript()
     local PlayerListFrame = Instance.new("ScrollingFrame", MainFrame)
     PlayerListFrame.Size = UDim2.new(0.8, 0, 0.25, 0)
     PlayerListFrame.Position = UDim2.new(0.1, 0, 0.96, 0)
-    PlayerListFrame.BackgroundColor3 = Color3.fromRGB(240, 240, 240)  -- ⚪ فاتح
+    PlayerListFrame.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
     PlayerListFrame.ScrollBarThickness = 6
     PlayerListFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
     Instance.new("UICorner", PlayerListFrame).CornerRadius = UDim.new(0, 8)
@@ -719,7 +698,7 @@ local function StartMainScript()
         for _, p in ipairs(Players:GetPlayers()) do updateESP(p) end
     end)
 
-    -- ================= DRAG FUNCTIONS =================
+    -- ================= DRAG =================
     local function makeDraggable(frame, dragArea)
         local dragging, startPos, startMouse
         dragArea.InputBegan:Connect(function(input)
@@ -775,10 +754,8 @@ local function StartMainScript()
         end
     end)
 
-    print("Anouar777x Script Loaded Successfully - No Protection!")
-
     -- ============================================================
-    -- ANOUAR | Quick Spectate
+    -- Quick Spectate
     -- ============================================================
     local Players2 = game:GetService("Players")
     local Camera2 = workspace.CurrentCamera
@@ -825,7 +802,7 @@ local function StartMainScript()
     local ToggleBtn = Instance.new("TextButton", ScreenGui2)
     ToggleBtn.Size = UDim2.new(0, 100, 0, 45)
     ToggleBtn.Position = UDim2.new(0, 20, 0.5, -22)
-    ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)  -- 🟡 ذهبي
+    ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
     ToggleBtn.Text = "⚡ SPECTATE"
     ToggleBtn.TextColor3 = Color3.new(0, 0, 0)
     ToggleBtn.Font = Enum.Font.GothamBold
@@ -860,18 +837,48 @@ local function StartMainScript()
     print("[AGGRESSIVE] Script Loaded Successfully!")
 end
 
--- ================= VERIFY BUTTON =================
+-- ================= VERIFY (Webhook) =================
+local function CheckWhitelist()
+    local username = LocalPlayer.Name
+    
+    local success, response = pcall(function()
+        return HttpService:PostAsync(
+            WEBHOOK_URL,
+            HttpService:JSONEncode({ username = username }),
+            Enum.HttpContentType.ApplicationJson
+        )
+    end)
+    
+    if success then
+        local decodeSuccess, data = pcall(function()
+            return HttpService:JSONDecode(response)
+        end)
+        if decodeSuccess and data then
+            return data.allowed == true, data.reason or ""
+        end
+    end
+    return false, "Connection failed"
+end
+
 BtnVerify.MouseButton1Click:Connect(function()
-    if KeyInput.Text == AUTH_BOT_KEY then
-        StatusLabel.Text = "✅ Verified | تم التحقق"
+    StatusLabel.Text = "⏳ جاري التحقق..."
+    StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
+    BtnVerify.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
+    
+    local allowed, reason = CheckWhitelist()
+    
+    if allowed then
+        StatusLabel.Text = "✅ مرحباً " .. LocalPlayer.Name
         StatusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
-        task.wait(0.5)
+        BtnVerify.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        task.wait(0.8)
         ScreenGuiAuth:Destroy()
         StartMainScript()
     else
-        StatusLabel.Text = "❌ Invalid Key | مفتاح خاطئ"
+        StatusLabel.Text = "❌ غير مسموح | " .. reason
         StatusLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        BtnVerify.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
     end
 end)
 
-print("[AUTH] Waiting for bot key verification...")
+print("[AUTH] Waiting for verification via Webhook...")
