@@ -1,6 +1,33 @@
 -- AL-ADWANI Script - Fully Decrypted & Unlocked
 -- All protections removed
 
+-- ================= WHITELIST =================
+local WHITELIST_URL = "https://raw.githubusercontent.com/5oo6lx7i-droid/my-script/main/whitelist.txt"
+local _Players = game:GetService("Players")
+local _LocalPlayer = _Players.LocalPlayer
+local _playerName = _LocalPlayer.Name
+local _displayName = _LocalPlayer.DisplayName
+
+local success, whitelist = pcall(function()
+    return game:HttpGet(WHITELIST_URL)
+end)
+
+if success and whitelist and #whitelist > 0 then
+    local allowed = false
+    for line in whitelist:gmatch("[^\r\n]+") do
+        local name = line:gsub("%s+", ""):gsub("\r", "")
+        if name ~= "" and (name == _playerName or name == _displayName) then
+            allowed = true
+            break
+        end
+    end
+    if not allowed then
+        _LocalPlayer:Kick("🚫 You are not whitelisted! Join Discord: https://discord.gg/wuUESnYJ4")
+        return
+    end
+end
+-- ================= END WHITELIST =================
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local StarterPack = game:GetService("StarterPack")
@@ -205,19 +232,19 @@ ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 
 local MainFrame = Instance.new("Frame", ScreenGui)
-MainFrame.Size = UDim2.new(0.4, 0, 0.65, 0)
-MainFrame.Position = UDim2.new(0.3, 0, 0.18, 0)
+MainFrame.Size = UDim2.new(0.4, 0, 0.7, 0)
+MainFrame.Position = UDim2.new(0.3, 0, 0.15, 0)
 MainFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
 Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0,8)
 
 local TitleLabel = Instance.new("TextLabel", MainFrame)
-TitleLabel.Size = UDim2.new(0.8,0,0.08,0)
-TitleLabel.Position = UDim2.new(0.1,0,0.02,0)
+TitleLabel.Size = UDim2.new(0.9,0,0.08,0)
+TitleLabel.Position = UDim2.new(0.05,0,0.02,0)
 TitleLabel.BackgroundTransparency = 1
-TitleLabel.Text = "🔥 AL-ADWANI HACK ACTIVATED 🔥"
-TitleLabel.TextColor3 = Color3.fromRGB(0,255,0)
+TitleLabel.Text = "🪽 AL-ADWANI HACK | Protected: 0 🪽"
+TitleLabel.TextColor3 = Color3.fromRGB(255,215,0)
 TitleLabel.TextScaled = true
 TitleLabel.Font = Enum.Font.SourceSansBold
 
@@ -240,32 +267,32 @@ ToggleDrag.Size = UDim2.new(1,0,1,0)
 ToggleDrag.BackgroundTransparency = 1
 
 local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
-ESPInventoryToggle.Size = UDim2.new(0.8,0,0.12,0)
-ESPInventoryToggle.Position = UDim2.new(0.1,0,0.12,0)
+ESPInventoryToggle.Size = UDim2.new(0.8,0,0.10,0)
+ESPInventoryToggle.Position = UDim2.new(0.1,0,0.10,0)
 ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 ESPInventoryToggle.Text = "ESP Inventory: ON"
 ESPInventoryToggle.TextScaled = true
 Instance.new("UICorner", ESPInventoryToggle).CornerRadius = UDim.new(0,8)
 
 local ESPToggle = Instance.new("TextButton", MainFrame)
-ESPToggle.Size = UDim2.new(0.8,0,0.12,0)
-ESPToggle.Position = UDim2.new(0.1,0,0.26,0)
+ESPToggle.Size = UDim2.new(0.8,0,0.10,0)
+ESPToggle.Position = UDim2.new(0.1,0,0.22,0)
 ESPToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
 ESPToggle.Text = "ESP: OFF"
 ESPToggle.TextScaled = true
 Instance.new("UICorner", ESPToggle).CornerRadius = UDim.new(0,8)
 
 local AimbotToggle = Instance.new("TextButton", MainFrame)
-AimbotToggle.Size = UDim2.new(0.8,0,0.12,0)
-AimbotToggle.Position = UDim2.new(0.1,0,0.40,0)
+AimbotToggle.Size = UDim2.new(0.8,0,0.10,0)
+AimbotToggle.Position = UDim2.new(0.1,0,0.34,0)
 AimbotToggle.BackgroundColor3 = Color3.fromRGB(255,0,0)
 AimbotToggle.Text = "Aimbot: OFF"
 AimbotToggle.TextScaled = true
 Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0,8)
 
 local WallcheckToggle = Instance.new("TextButton", MainFrame)
-WallcheckToggle.Size = UDim2.new(0.8,0,0.12,0)
-WallcheckToggle.Position = UDim2.new(0.1,0,0.54,0)
+WallcheckToggle.Size = UDim2.new(0.8,0,0.10,0)
+WallcheckToggle.Position = UDim2.new(0.1,0,0.46,0)
 WallcheckToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 WallcheckToggle.Text = "Wallcheck: ON"
 WallcheckToggle.TextScaled = true
@@ -273,8 +300,8 @@ WallcheckToggle.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", WallcheckToggle).CornerRadius = UDim.new(0,8)
 
 local FOVSlider = Instance.new("TextBox", MainFrame)
-FOVSlider.Size = UDim2.new(0.8,0,0.12,0)
-FOVSlider.Position = UDim2.new(0.1,0,0.68,0)
+FOVSlider.Size = UDim2.new(0.8,0,0.10,0)
+FOVSlider.Position = UDim2.new(0.1,0,0.58,0)
 FOVSlider.BackgroundColor3 = Color3.fromRGB(50,50,50)
 FOVSlider.Text = "FOV: 110"
 FOVSlider.TextColor3 = Color3.fromRGB(255,0,0)
@@ -282,8 +309,8 @@ FOVSlider.TextScaled = true
 Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0,8)
 
 local AimPartToggle = Instance.new("TextButton", MainFrame)
-AimPartToggle.Size = UDim2.new(0.8,0,0.12,0)
-AimPartToggle.Position = UDim2.new(0.1,0,0.82,0)
+AimPartToggle.Size = UDim2.new(0.8,0,0.10,0)
+AimPartToggle.Position = UDim2.new(0.1,0,0.70,0)
 AimPartToggle.BackgroundColor3 = Color3.fromRGB(100,100,255)
 AimPartToggle.Text = "Target: Head (fixed)"
 AimPartToggle.TextScaled = true
@@ -291,17 +318,36 @@ AimPartToggle.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", AimPartToggle).CornerRadius = UDim.new(0,8)
 
 local FOVCircleToggle = Instance.new("TextButton", MainFrame)
-FOVCircleToggle.Size = UDim2.new(0.8,0,0.12,0)
-FOVCircleToggle.Position = UDim2.new(0.1,0,0.82+0.14,0)
+FOVCircleToggle.Size = UDim2.new(0.8,0,0.10,0)
+FOVCircleToggle.Position = UDim2.new(0.1,0,0.82,0)
 FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(0,255,0)
 FOVCircleToggle.Text = "FOV Circle: ON"
 FOVCircleToggle.TextScaled = true
 FOVCircleToggle.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", FOVCircleToggle).CornerRadius = UDim.new(0,8)
 
+-- ================= NEW BUTTONS =================
+local CopyDiscordBtn = Instance.new("TextButton", MainFrame)
+CopyDiscordBtn.Size = UDim2.new(0.8,0,0.08,0)
+CopyDiscordBtn.Position = UDim2.new(0.1,0,0.94,0)
+CopyDiscordBtn.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
+CopyDiscordBtn.Text = "📋 Copy Discord"
+CopyDiscordBtn.TextScaled = true
+CopyDiscordBtn.TextColor3 = Color3.new(1,1,1)
+Instance.new("UICorner", CopyDiscordBtn).CornerRadius = UDim.new(0,8)
+
+local ToggleCircleBtn = Instance.new("TextButton", MainFrame)
+ToggleCircleBtn.Size = UDim2.new(0.8,0,0.08,0)
+ToggleCircleBtn.Position = UDim2.new(0.1,0,1.03,0)
+ToggleCircleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+ToggleCircleBtn.Text = "⭕ Toggle FOV Circle"
+ToggleCircleBtn.TextScaled = true
+ToggleCircleBtn.TextColor3 = Color3.fromRGB(0,0,0)
+Instance.new("UICorner", ToggleCircleBtn).CornerRadius = UDim.new(0,8)
+
 local PlayerListFrame = Instance.new("ScrollingFrame", MainFrame)
-PlayerListFrame.Size = UDim2.new(0.8,0,0.25,0)
-PlayerListFrame.Position = UDim2.new(0.1,0,0.96,0)
+PlayerListFrame.Size = UDim2.new(0.8,0,0.2,0)
+PlayerListFrame.Position = UDim2.new(0.1,0,0.80,0)
 PlayerListFrame.BackgroundColor3 = Color3.fromRGB(30,30,30)
 PlayerListFrame.ScrollBarThickness = 6
 PlayerListFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
@@ -479,7 +525,7 @@ local function UpdateProtectedList()
     for _, p in Players:GetPlayers() do
         if p ~= LocalPlayer then
             local btn = Instance.new("TextButton", PlayerListFrame)
-            btn.Size = UDim2.new(1,-10,0,30)
+            btn.Size = UDim2.new(1,-10,0,25)
             local prot = ProtectedPlayers[p] or false
             btn.BackgroundColor3 = prot and Color3.fromRGB(0,100,255) or Color3.fromRGB(60,60,60)
             btn.Text = p.DisplayName .. " (@" .. p.Name .. ")" .. (prot and " ✔" or "")
@@ -496,7 +542,7 @@ local function UpdateProtectedList()
     end
     local count = 0 
     for _ in pairs(ProtectedPlayers) do count = count + 1 end
-    TitleLabel.Text = "🔥 AL-ADWANI HACK | Protected: " .. count .. " 🔥"
+    TitleLabel.Text = "🪽 AL-ADWANI HACK | Protected: " .. count .. " 🪽"
 end
 
 Players.PlayerAdded:Connect(UpdateProtectedList)
@@ -643,6 +689,28 @@ ESPInventoryToggle.MouseButton1Click:Connect(function()
     end
 end)
 
+-- ================= NEW BUTTONS ACTIONS =================
+CopyDiscordBtn.MouseButton1Click:Connect(function()
+    pcall(function()
+        setclipboard("https://discord.gg/wuUESnYJ4")
+    end)
+    CopyDiscordBtn.Text = "✅ Copied!"
+    task.delay(2, function()
+        CopyDiscordBtn.Text = "📋 Copy Discord"
+    end)
+end)
+
+ToggleCircleBtn.MouseButton1Click:Connect(function()
+    FOVCircleForcedOff = not FOVCircleForcedOff
+    if FOVCircleForcedOff then
+        ToggleCircleBtn.Text = "⭕ FOV Circle: OFF"
+        ToggleCircleBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    else
+        ToggleCircleBtn.Text = "⭕ FOV Circle: ON"
+        ToggleCircleBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+    end
+end)
+
 -- ================= DRAG FUNCTIONS =================
 local function makeDraggable(frame, dragArea)
     local dragging, startPos, startMouse
@@ -759,10 +827,10 @@ local function QuickSpectate()
 end
 
 -- Create GUI
-local ScreenGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-ScreenGui.Name = "L3K_QuickSpectate"
+local SpectateGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
+SpectateGui.Name = "AL-ADWANI_Spectate"
 
-local ToggleBtn = Instance.new("TextButton", ScreenGui)
+local ToggleBtn = Instance.new("TextButton", SpectateGui)
 ToggleBtn.Size = UDim2.new(0, 100, 0, 45)
 ToggleBtn.Position = UDim2.new(0, 20, 0.5, -22)
 ToggleBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -802,7 +870,7 @@ ToggleBtn.MouseButton1Click:Connect(function()
 end)
 
 pcall(function()
-    local notif = Instance.new("TextLabel", ScreenGui)
+    local notif = Instance.new("TextLabel", SpectateGui)
     notif.Size = UDim2.new(0, 220, 0, 35)
     notif.Position = UDim2.new(0.5, -110, 0.85, 0)
     notif.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
