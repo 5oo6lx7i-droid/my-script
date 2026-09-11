@@ -238,7 +238,7 @@ local ArabicBtn = Instance.new("TextButton", LangFrame)
 ArabicBtn.Size = UDim2.new(0.8, 0, 0.25, 0)
 ArabicBtn.Position = UDim2.new(0.1, 0, 0.68, 0)
 ArabicBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
-ArabicBtn.Text = "🇸🇦 العربية"
+ArabicBtn.Text = "🇰🇼 العربية"
 ArabicBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 ArabicBtn.TextScaled = true
 ArabicBtn.Font = Enum.Font.GothamBold
@@ -277,12 +277,10 @@ MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
 Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 12)
 
--- إطار أسود
 local stroke = Instance.new("UIStroke", MainFrame)
 stroke.Color = Color3.fromRGB(255, 215, 0)
 stroke.Thickness = 3
 
--- خلفية داخلية بيضاء
 local innerFrame = Instance.new("Frame", MainFrame)
 innerFrame.Size = UDim2.new(1, -10, 1, -10)
 innerFrame.Position = UDim2.new(0, 5, 0, 5)
@@ -309,7 +307,7 @@ MainDrag.ZIndex = 2
 local ToggleButton = Instance.new("TextButton", ScreenGui)
 ToggleButton.Size = UDim2.new(0, 100, 0, 40)
 ToggleButton.Position = UDim2.new(0.9, 0, 0.05, 0)
-ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 ToggleButton.Text = "Open"
 ToggleButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 ToggleButton.TextScaled = true
@@ -326,7 +324,7 @@ ESPInventoryToggle.Position = UDim2.new(0.1, 0, 0.12, 0)
 ESPInventoryToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 ESPInventoryToggle.Text = "ESP Inventory: ON"
 ESPInventoryToggle.TextScaled = true
-ESPInventoryToggle.TextColor3 = Color3.fromRGB(255, 215, 0)
+ESPInventoryToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 ESPInventoryToggle.ZIndex = 2
 Instance.new("UICorner", ESPInventoryToggle).CornerRadius = UDim.new(0, 8)
 
@@ -336,7 +334,7 @@ ESPToggle.Position = UDim2.new(0.1, 0, 0.24, 0)
 ESPToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 ESPToggle.Text = "ESP: OFF"
 ESPToggle.TextScaled = true
-ESPToggle.TextColor3 = Color3.fromRGB(255, 215, 0)
+ESPToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 ESPToggle.ZIndex = 2
 Instance.new("UICorner", ESPToggle).CornerRadius = UDim.new(0, 8)
 
@@ -346,7 +344,7 @@ AimbotToggle.Position = UDim2.new(0.1, 0, 0.36, 0)
 AimbotToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 AimbotToggle.Text = "Ground Aimbot: OFF"
 AimbotToggle.TextScaled = true
-AimbotToggle.TextColor3 = Color3.fromRGB(255, 215, 0)
+AimbotToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 AimbotToggle.ZIndex = 2
 Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0, 8)
 
@@ -356,7 +354,7 @@ WallcheckToggle.Position = UDim2.new(0.1, 0, 0.48, 0)
 WallcheckToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 WallcheckToggle.Text = "Wallcheck: ON"
 WallcheckToggle.TextScaled = true
-WallcheckToggle.TextColor3 = Color3.fromRGB(255, 215, 0)
+WallcheckToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 WallcheckToggle.ZIndex = 2
 Instance.new("UICorner", WallcheckToggle).CornerRadius = UDim.new(0, 8)
 
@@ -365,7 +363,7 @@ FOVSlider.Size = UDim2.new(0.8, 0, 0.10, 0)
 FOVSlider.Position = UDim2.new(0.1, 0, 0.60, 0)
 FOVSlider.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 FOVSlider.Text = "FOV: 110"
-FOVSlider.TextColor3 = Color3.fromRGB(255, 215, 0)
+FOVSlider.TextColor3 = Color3.fromRGB(255, 255, 255)
 FOVSlider.TextScaled = true
 FOVSlider.ZIndex = 2
 Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0, 8)
@@ -373,10 +371,10 @@ Instance.new("UICorner", FOVSlider).CornerRadius = UDim.new(0, 8)
 local AimPartToggle = Instance.new("TextButton", MainFrame)
 AimPartToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
 AimPartToggle.Position = UDim2.new(0.1, 0, 0.72, 0)
-AimPartToggle.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+AimPartToggle.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
 AimPartToggle.Text = "Target: Head (fixed)"
 AimPartToggle.TextScaled = true
-AimPartToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+AimPartToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
 AimPartToggle.ZIndex = 2
 Instance.new("UICorner", AimPartToggle).CornerRadius = UDim.new(0, 8)
 
@@ -386,7 +384,7 @@ FOVCircleToggle.Position = UDim2.new(0.1, 0, 0.84, 0)
 FOVCircleToggle.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 FOVCircleToggle.Text = "FOV Circle: ON"
 FOVCircleToggle.TextScaled = true
-FOVCircleToggle.TextColor3 = Color3.fromRGB(255, 215, 0)
+FOVCircleToggle.TextColor3 = Color3.fromRGB(0, 0, 0)
 FOVCircleToggle.ZIndex = 2
 Instance.new("UICorner", FOVCircleToggle).CornerRadius = UDim.new(0, 8)
 
@@ -410,7 +408,7 @@ AimBtnGui.ResetOnSpawn = false
 local AimBtn = Instance.new("TextButton", AimBtnGui)
 AimBtn.Size = UDim2.new(0, 150, 0, 50)
 AimBtn.Position = UDim2.new(0, 20, 0.5, -25)
-AimBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+AimBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 AimBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 AimBtn.Font = Enum.Font.GothamBold
 AimBtn.TextSize = 14
@@ -439,13 +437,13 @@ local currentLang = translations.en
 local FOVCircle = Drawing.new("Circle")
 FOVCircle.Radius = FOVRadius
 FOVCircle.Thickness = 2
-FOVCircle.Color = Color3.fromRGB(255, 215, 0)
+FOVCircle.Color = Color3.fromRGB(255, 0, 0)
 FOVCircle.Transparency = 0.6
 FOVCircle.Filled = false
 FOVCircle.Visible = false
 
 local AIM_MODES = {
-    {name = "Head (fixed)",               part = "Head",                        color = Color3.fromRGB(255, 215, 0)},
+    {name = "Head (fixed)",               part = "Head",                        color = Color3.fromRGB(100, 100, 255)},
     {name = "Torso (fixed)",              part = "HumanoidRootPart",            color = Color3.fromRGB(255, 150, 50)},
     {name = "Right Arm (fixed)",          part = "RightUpperArm",               color = Color3.fromRGB(50, 205, 50)},
     {name = "Left Arm (fixed)",           part = "LeftUpperArm",                color = Color3.fromRGB(50, 255, 150)},
@@ -546,7 +544,7 @@ local function applyESP(char)
 
     local hl = Instance.new("Highlight", char)
     hl.Name = "AnouarHighlight"
-    hl.OutlineColor = Color3.fromRGB(255, 215, 0)
+    hl.OutlineColor = Color3.fromRGB(255, 255, 0)
     hl.OutlineTransparency = 0
     hl.FillTransparency = 1
 end
@@ -594,9 +592,9 @@ local function UpdateProtectedList()
             local btn = Instance.new("TextButton", PlayerListFrame)
             btn.Size = UDim2.new(1, -10, 0, 25)
             local prot = ProtectedPlayers[p] or false
-            btn.BackgroundColor3 = prot and Color3.fromRGB(255, 215, 0) or Color3.fromRGB(60, 60, 60)
-            btn.Text = p.DisplayName .. " (@" .. p.Name .. ")" .. (prot and " 🪽" or "")
-            btn.TextColor3 = Color3.fromRGB(255, 215, 0)
+            btn.BackgroundColor3 = prot and Color3.fromRGB(0, 100, 255) or Color3.fromRGB(60, 60, 60)
+            btn.Text = p.DisplayName .. " (@" .. p.Name .. ")" .. (prot and " ✔" or "")
+            btn.TextColor3 = Color3.new(1, 1, 1)
             btn.TextScaled = true
             btn.ZIndex = 3
             Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
@@ -782,6 +780,11 @@ AimBtn.MouseButton1Click:Connect(function()
     AimbotOn = not AimbotOn
     AimbotToggle.Text = currentLang.aimbot .. ": " .. (AimbotOn and "ON" or "OFF")
     AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    if AimbotOn then
+        AimBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    else
+        AimBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    end
 end)
 -- ================= END LEFT AIMBOT BUTTON =================
 
@@ -879,64 +882,71 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
--- ================= SPECTATE BUTTON =================
+-- ================= CAR AIMBOT BUTTON (LEFT) =================
 repeat task.wait() until game:IsLoaded()
 
-local SpectateGui = Instance.new("ScreenGui", game.CoreGui)
-SpectateGui.Name = "AL-ADWANI_Spectate"
+local CarAimbotGui = Instance.new("ScreenGui", game.CoreGui)
+CarAimbotGui.Name = "AL-ADWANI_CarAimbot"
+CarAimbotGui.ResetOnSpawn = false
 
-local SpectateBtn = Instance.new("TextButton", SpectateGui)
-SpectateBtn.Size = UDim2.new(0, 100, 0, 45)
-SpectateBtn.Position = UDim2.new(0, 20, 0.6, -22)
-SpectateBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
-SpectateBtn.Text = "⚡ SPECTATE"
-SpectateBtn.TextColor3 = Color3.new(0, 0, 0)
-SpectateBtn.Font = Enum.Font.GothamBold
-SpectateBtn.TextSize = 12
-Instance.new("UICorner", SpectateBtn).CornerRadius = UDim.new(0, 10)
+local CarAimbotBtn = Instance.new("TextButton", CarAimbotGui)
+CarAimbotBtn.Size = UDim2.new(0, 150, 0, 50)
+CarAimbotBtn.Position = UDim2.new(0, 20, 0.6, -22)
+CarAimbotBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CarAimbotBtn.Text = "⚡ Car Aimbot"
+CarAimbotBtn.TextColor3 = Color3.new(0, 0, 0)
+CarAimbotBtn.Font = Enum.Font.GothamBold
+CarAimbotBtn.TextSize = 14
+Instance.new("UICorner", CarAimbotBtn).CornerRadius = UDim.new(0, 10)
 
-local function QuickSpectate()
-    for _, p in ipairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character and IsAlive(p.Character) then
-            if p.Character:FindFirstChild("Humanoid") then
-                Camera.CameraSubject = p.Character.Humanoid
-            end
-            task.spawn(function()
-                task.wait(0.001)
-                if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") then
-                    Camera.CameraSubject = LocalPlayer.Character.Humanoid
-                end
-            end)
-            break
-        end
-    end
-end
+local CarAimbotStroke = Instance.new("UIStroke", CarAimbotBtn)
+CarAimbotStroke.Color = Color3.fromRGB(0, 0, 0)
+CarAimbotStroke.Thickness = 2
 
-SpectateBtn.MouseButton1Click:Connect(QuickSpectate)
-
--- Drag Spectate
-local dragSp, refSp1, refSp2
-SpectateBtn.InputBegan:Connect(function(input)
+-- Drag
+local dragCar, refCar1, refCar2
+CarAimbotBtn.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragSp = true
-        refSp1 = SpectateBtn.Position
-        refSp2 = input.Position
+        dragCar = true
+        refCar1 = CarAimbotBtn.Position
+        refCar2 = input.Position
     end
 end)
 UserInputService.InputEnded:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragSp = false
+        dragCar = false
     end
 end)
 UserInputService.InputChanged:Connect(function(input)
-    if dragSp and input.UserInputType == Enum.UserInputType.MouseMovement then
-        local delta = input.Position - refSp2
-        SpectateBtn.Position = UDim2.new(
-            refSp1.X.Scale, refSp1.X.Offset + delta.X,
-            refSp1.Y.Scale, refSp1.Y.Offset + delta.Y
+    if dragCar and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - refCar2
+        CarAimbotBtn.Position = UDim2.new(
+            refCar1.X.Scale, refCar1.X.Offset + delta.X,
+            refCar1.Y.Scale, refCar1.Y.Offset + delta.Y
         )
     end
 end)
--- ================= END SPECTATE BUTTON =================
+
+-- ضغطة → يفتح/يقفل Aimbot
+CarAimbotBtn.MouseButton1Click:Connect(function()
+    AimbotOn = not AimbotOn
+    AimbotToggle.Text = currentLang.aimbot .. ": " .. (AimbotOn and "ON" or "OFF")
+    AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+    if AimbotOn then
+        CarAimbotBtn.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    else
+        CarAimbotBtn.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    end
+end)
+
+-- تحديث الاسم حسب اللغة
+EnglishBtn.MouseButton1Click:Connect(function()
+    CarAimbotBtn.Text = "⚡ Car Aimbot"
+end)
+
+ArabicBtn.MouseButton1Click:Connect(function()
+    CarAimbotBtn.Text = "⚡ إيم بوت سيارة"
+end)
+-- ================= END CAR AIMBOT BUTTON =================
 
 print("AL-ADWANI Script Loaded Successfully!")
