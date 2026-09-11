@@ -261,8 +261,6 @@ ScreenGui.Name = "AL-ADWANI_HUB"
 ScreenGui.IgnoreGuiInset = true
 ScreenGui.ResetOnSpawn = false
 
-local selectedLang = nil
-
 local LangFrame = Instance.new("Frame", ScreenGui)
 LangFrame.Size = UDim2.new(0.3, 0, 0.3, 0)
 LangFrame.Position = UDim2.new(0.35, 0, 0.35, 0)
@@ -309,7 +307,7 @@ local translations = {
         title = "🪽 AL-ADWANI HACK 🪽",
         espInv = "ESP Inventory",
         esp = "ESP",
-        aimbot = "Car Aimbot",
+        aimbot = "Ground Aimbot",
         wallcheck = "Wallcheck",
         fov = "FOV",
         target = "Target: Head (fixed)",
@@ -319,7 +317,7 @@ local translations = {
         title = "🪽 AL-ADWANI HACK 🪽",
         espInv = "جرد ESP",
         esp = "ESP",
-        aimbot = "إيم بوت سيارة",
+        aimbot = "إيم بوت أرضي",
         wallcheck = "Wallcheck",
         fov = "FOV",
         target = "الهدف: الرأس",
@@ -367,6 +365,26 @@ local ToggleDrag = Instance.new("Frame", ToggleButton)
 ToggleDrag.Size = UDim2.new(1, 0, 1, 0)
 ToggleDrag.BackgroundTransparency = 1
 
+-- ================= LEFT AIMBOT BUTTON =================
+local AimBtnGui = Instance.new("ScreenGui", game.CoreGui)
+AimBtnGui.Name = "AL-ADWANI_AimBtn"
+AimBtnGui.ResetOnSpawn = false
+
+local AimBtn = Instance.new("TextButton", AimBtnGui)
+AimBtn.Size = UDim2.new(0, 150, 0, 50)
+AimBtn.Position = UDim2.new(0, 20, 0.5, -25)
+AimBtn.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
+AimBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+AimBtn.Font = Enum.Font.GothamBold
+AimBtn.TextSize = 14
+AimBtn.Text = "⚡ Car Aimbot"
+Instance.new("UICorner", AimBtn).CornerRadius = UDim.new(0, 10)
+
+local AimBtnStroke = Instance.new("UIStroke", AimBtn)
+AimBtnStroke.Color = Color3.fromRGB(0, 0, 0)
+AimBtnStroke.Thickness = 2
+-- ================= END LEFT AIMBOT BUTTON =================
+
 local ESPInventoryToggle = Instance.new("TextButton", MainFrame)
 ESPInventoryToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
 ESPInventoryToggle.Position = UDim2.new(0.1, 0, 0.12, 0)
@@ -387,7 +405,7 @@ local AimbotToggle = Instance.new("TextButton", MainFrame)
 AimbotToggle.Size = UDim2.new(0.8, 0, 0.10, 0)
 AimbotToggle.Position = UDim2.new(0.1, 0, 0.36, 0)
 AimbotToggle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-AimbotToggle.Text = "Car Aimbot: OFF"
+AimbotToggle.Text = "Ground Aimbot: OFF"
 AimbotToggle.TextScaled = true
 Instance.new("UICorner", AimbotToggle).CornerRadius = UDim.new(0, 8)
 
@@ -769,6 +787,37 @@ ESPInventoryToggle.MouseButton1Click:Connect(function()
     end
 end)
 
+-- ================= LEFT AIMBOT BUTTON =================
+local draggingAim, refAim1, refAim2
+AimBtn.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        draggingAim = true
+        refAim1 = AimBtn.Position
+        refAim2 = input.Position
+    end
+end)
+UserInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        draggingAim = false
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if draggingAim and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - refAim2
+        AimBtn.Position = UDim2.new(
+            refAim1.X.Scale, refAim1.X.Offset + delta.X,
+            refAim1.Y.Scale, refAim1.Y.Offset + delta.Y
+        )
+    end
+end)
+
+AimBtn.MouseButton1Click:Connect(function()
+    AimbotOn = not AimbotOn
+    AimbotToggle.Text = currentLang.aimbot .. ": " .. (AimbotOn and "ON" or "OFF")
+    AimbotToggle.BackgroundColor3 = AimbotOn and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 0, 0)
+end)
+-- ================= END LEFT AIMBOT BUTTON =================
+
 -- ================= LANGUAGE BUTTONS =================
 EnglishBtn.MouseButton1Click:Connect(function()
     currentLang = translations.en
@@ -783,6 +832,7 @@ EnglishBtn.MouseButton1Click:Connect(function()
     FOVSlider.Text = currentLang.fov .. ": 110"
     AimPartToggle.Text = currentLang.target .. ": Head (fixed)"
     FOVCircleToggle.Text = currentLang.fovCircle .. ": ON"
+    AimBtn.Text = "⚡ Car Aimbot"
 end)
 
 ArabicBtn.MouseButton1Click:Connect(function()
@@ -798,6 +848,7 @@ ArabicBtn.MouseButton1Click:Connect(function()
     FOVSlider.Text = currentLang.fov .. ": 110"
     AimPartToggle.Text = currentLang.target
     FOVCircleToggle.Text = currentLang.fovCircle .. ": ON"
+    AimBtn.Text = "⚡ إيم بوت أرضي"
 end)
 
 -- ================= DRAG =================
